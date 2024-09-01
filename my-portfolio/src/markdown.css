@@ -1,0 +1,27 @@
+/* src/markdown.css */
+.markdown-body h1, 
+.markdown-body h2, 
+.markdown-body h3 {
+    @apply font-bold my-4;
+}
+
+.markdown-body p {
+    @apply mb-4;
+}
+
+.markdown-body ul, 
+.markdown-body ol {
+    @apply list-inside list-disc mb-4;
+}
+
+.markdown-body code {
+    @apply bg-gray-200 px-2 py-1 rounded;
+}
+
+.markdown-body pre {
+    @apply bg-gray-100 p-4 rounded overflow-x-auto;
+}
+
+.markdown-body blockquote {
+    @apply border-l-4 border-gray-300 pl-4 italic mb-4;
+}
