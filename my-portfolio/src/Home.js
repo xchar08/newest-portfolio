@@ -37,9 +37,13 @@ const Home = () => {
             <div className="mt-2 text-gray-500"> {/* Adjust margin-top here */}
                 {textArray[index]}
             </div>
-            <div className="mt-6 text-orange-400"> {/* Adjust margin-top here */}
+            <a
+                href="/resume.pdf" // Path to your resume in the public folder
+                download="resume.pdf" // Filename for the downloaded file
+                className="mt-6 text-orange-400 hover:underline" // Added hover effect
+            >
                 download my resume
-            </div>
+            </a>
         </div>
     );
 };
