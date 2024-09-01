@@ -34,7 +34,7 @@ const Home = () => {
             <div className="mt-2 text-gray-500"> {/* Adjust margin-top here */}
                 I strive to /
             </div>
-            <div className="mt-2 text-2xl font-light"> {/* Adjust margin-top here */}
+            <div className="mt-2 text-gray-500 font-light"> {/* Adjust margin-top here */}
                 {textArray[index]}
             </div>
             <div className="mt-6 text-orange-400"> {/* Adjust margin-top here */}
