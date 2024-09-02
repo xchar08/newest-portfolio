@@ -29,7 +29,7 @@ const Home = () => {
                 Hi, I'm Jeremiah Pitts,
             </h1>
             <h2 className="text-orange-400 mt-1"> {/* Adjust margin-top here */}
-                a Mechanical, Aerospace, & Software Engineering Student.
+                a Software Engineering, Physics, & Mathematics Student.
             </h2>
             <div className="mt-2 text-gray-500"> {/* Adjust margin-top here */}
                 I strive to /
