@@ -14,33 +14,33 @@ const Home = () => {
     }, [textArray.length]);
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-white text-center">
-            <div className="flex items-center justify-center">
+        <div className="flex flex-col items-center justify-center h-3/4 bg-white text-center"> {/* Adjusted height */}
+            <div className="flex items-center justify-center mt-72">
                 <div className="relative w-40 h-40">
                     <img
-                        src="your-profile-pic-url" // Replace with your actual profile picture URL
+                        src="home-headshot.png" // Replace with your actual profile picture URL
                         alt="Profile"
                         className="rounded-full w-full h-full object-cover"
                     />
                     <div className="spin-circle absolute inset-0 border-4 border-orange-500 rounded-full"></div>
                 </div>
             </div>
-            <h1 className="mt-4 text-3xl font-bold"> {/* Adjust margin-top here */}
+            <h1 className="mt-2 text-3xl font-bold"> {/* Adjusted margin-top to 2 */}
                 Hi, I'm Jeremiah Pitts,
             </h1>
-            <h2 className="text-orange-400 mt-1"> {/* Adjust margin-top here */}
+            <h2 className="text-orange-400 mt-1"> {/* Adjusted margin-top remains 1 */}
                 a Software Engineering, Physics, & Mathematics Student.
             </h2>
-            <div className="mt-2 text-gray-500"> {/* Adjust margin-top here */}
+            <div className="mt-1 text-gray-500"> {/* Adjusted margin-top to 1 */}
                 I strive to /
             </div>
-            <div className="mt-2 text-gray-500"> {/* Adjust margin-top here */}
+            <div className="mt-1 text-gray-500"> {/* Adjusted margin-top to 1 */}
                 {textArray[index]}
             </div>
             <a
                 href="/resume.pdf" // Path to your resume in the public folder
                 download="resume.pdf" // Filename for the downloaded file
-                className="mt-6 text-orange-400 hover:underline" // Added hover effect
+                className="mt-4 text-orange-400 hover:underline" // Adjusted margin-top to 4
             >
                 download my resume
             </a>
