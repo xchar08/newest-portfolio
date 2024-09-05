@@ -124,7 +124,7 @@ function Timeline() {
                     <div key={index} className="mb-4">
                         <button
                             onClick={() => handleToggle(index)}
-                            className="w-full flex items-center justify-between px-4 py-2 bg-gray-200 rounded-lg shadow-md text-left font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            className="w-full flex items-center justify-between px-4 py-2 bg-white-200 rounded-lg shadow-md text-left font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
                         >
                             <span>{item.season}</span>
                             <svg

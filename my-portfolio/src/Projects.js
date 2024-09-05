@@ -128,36 +128,30 @@ const Projects = () => {
 
     return (
         <div className="p-8 bg-white-100">
-            <div className="mt-32">
-                <h1 className="text-4xl font-bold mb-8 text-center mt-32">Projects</h1>
-                <div className="space-y-16">
-                    {projects.map((project) => (
-                        <div 
-                            key={project.name} 
-                            className="flex flex-col lg:flex-row items-start lg:items-center gap-8" 
-                        >
-                            <div className="lg:w-1/2">
-                                <img src={project.image} alt={project.name} className="rounded-lg shadow-lg w-full object-cover" />
-                            </div>
-                            <div className="lg:w-1/2">
-                                <h2 className="text-3xl font-bold text-gray-800">{project.name}</h2>
-                                <p className="text-lg text-gray-600 mt-4">
-                                    {projectDetails[project.name]?.description || 'Loading description...'}
-                                </p>
-                                <div className="mt-8 flex gap-4">
-                                    {project.liveLink && (
-                                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">
-                                            See Live
-                                        </a>
-                                    )}
-                                    <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900">
-                                        Source Code
-                                    </a>
-                                </div>
-                            </div>
+            <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {projects.map((project) => (
+                    <div 
+                        key={project.name} 
+                        className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center"
+                    >
+                        <img src={project.image} alt={project.name} className="rounded-full h-32 w-32 object-cover mb-4" />
+                        <h2 className="text-2xl font-bold text-gray-800">{project.name}</h2>
+                        <p className="text-lg text-gray-600 mt-2">
+                            {projectDetails[project.name]?.description || 'Loading description...'}
+                        </p>
+                        <div className="mt-4 flex gap-4">
+                            {project.liveLink && (
+                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">
+                                    See Live
+                                </a>
+                            )}
+                            <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900">
+                                Source Code
+                            </a>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
