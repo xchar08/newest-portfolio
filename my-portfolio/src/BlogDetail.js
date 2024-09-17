@@ -11,8 +11,10 @@ const BlogDetail = () => {
     }
 
     return (
-        <div className="p-8">
-            <h1 className="text-4xl font-bold mb-4">{post.title}</h1>
+        <div className="p-8" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Apply Fira Mono globally */}
+            <h1 className="text-4xl font-bold mb-4" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Apply Times New Roman to h1 */}
+                {post.title}
+            </h1>
             <p className="text-gray-500 mb-4">{post.date}</p>
             <img src={post.image} alt={post.title} className="w-full h-96 object-cover mb-4 rounded-lg" />
             <div className="bg-white p-4 rounded-lg shadow-md">

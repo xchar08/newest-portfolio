@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './Home.css'; // Create a CSS file for additional styling
+import './Home.css'; // Ensure this file is updated for the correct font imports
 
 const Home = () => {
     const [index, setIndex] = useState(0);
@@ -14,8 +14,8 @@ const Home = () => {
     }, [textArray.length]);
 
     return (
-        <div className="flex flex-col items-center justify-center h-3/4 bg-white text-center"> {/* Adjusted height */}
-            <div className="flex items-center justify-center mt-72">
+        <div className="flex flex-col items-center justify-center h-1/2 bg-white text-center" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Apply Fira Mono globally */}
+            <div className="flex items-center justify-center mt-52">
                 <div className="relative w-40 h-40">
                     <img
                         src="home-headshot.png" // Replace with your actual profile picture URL
@@ -25,22 +25,22 @@ const Home = () => {
                     <div className="spin-circle absolute inset-0 border-4 border-orange-500 rounded-full"></div>
                 </div>
             </div>
-            <h1 className="mt-2 text-3xl font-bold"> {/* Adjusted margin-top to 2 */}
+            <h1 className="mt-2 text-3xl" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Apply Times New Roman to heading */}
                 Hi, I'm Jeremiah Pitts,
             </h1>
-            <h2 className="text-orange-400 mt-1"> {/* Adjusted margin-top remains 1 */}
+            <h2 className="text-orange-400 mt-1"> {/* Fira Mono used as it is global */}
                 a Software Engineering, Physics, & Mathematics Student.
             </h2>
-            <div className="mt-1 text-gray-500"> {/* Adjusted margin-top to 1 */}
+            <div className="mt-1 text-gray-500"> {/* Fira Mono applied */}
                 I strive to /
             </div>
-            <div className="mt-1 text-gray-500"> {/* Adjusted margin-top to 1 */}
+            <div className="mt-1 text-gray-500"> {/* Fira Mono applied */}
                 {textArray[index]}
             </div>
             <a
                 href="/resume.pdf" // Path to your resume in the public folder
                 download="resume.pdf" // Filename for the downloaded file
-                className="mt-4 text-orange-400 hover:underline" // Adjusted margin-top to 4
+                className="mt-4 text-orange-400 hover:underline" // Fira Mono applied as it is global
             >
                 download my resume
             </a>

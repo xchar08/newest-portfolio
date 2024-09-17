@@ -117,14 +117,17 @@ function Timeline() {
     };
 
     return (
-        <div className="flex flex-col items-center p-8 h-3/4 bg-white">
-            <div className="flex flex-col justify-center w-full max-w-3xl mt-32 mb-auto">
-                <h1 className="text-4xl font-bold mb-4 text-center">Timeline</h1>
+        <div className="flex flex-col items-center p-8 h-3/4 bg-white" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Apply Fira Mono globally */}
+            <div className="flex flex-col justify-center w-full max-w-3xl mt-10 mb-auto">
+                <h1 className="text-4xl mb-8 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Apply Times New Roman to heading */}
+                    Timeline
+                </h1>
                 {timelineData.map((item, index) => (
                     <div key={index} className="mb-4">
                         <button
                             onClick={() => handleToggle(index)}
                             className="w-full flex items-center justify-between px-4 py-2 bg-white-200 rounded-lg shadow-md text-left font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                            style={{ fontFamily: "'Times New Roman', Times, serif" }} // Apply Times New Roman to buttons
                         >
                             <span>{item.season}</span>
                             <svg

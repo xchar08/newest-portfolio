@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { fetchProjectDetails } from './githubUtils';
 import project1Img from './images/project1.png'; // Update paths as needed
 import battlegrounduta from './images/battleground-uta.png'; // Update paths as needed
@@ -127,8 +126,10 @@ const Projects = () => {
     }, []);
 
     return (
-        <div className="p-8 bg-white-100">
-            <h1 className="text-4xl font-bold mb-8 text-center">Projects</h1>
+        <div className="p-8 bg-white-100" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Fira Mono applied globally */}
+            <h1 className="text-4xl mt-10 mb-10 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Times New Roman for heading */}
+                Projects
+            </h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {projects.map((project) => (
                     <div 
@@ -136,7 +137,9 @@ const Projects = () => {
                         className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center"
                     >
                         <img src={project.image} alt={project.name} className="rounded-full h-32 w-32 object-cover mb-4" />
-                        <h2 className="text-2xl font-bold text-gray-800">{project.name}</h2>
+                        <h2 className="text-2xl font-bold text-gray-800" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Times New Roman for project titles */}
+                            {project.name}
+                        </h2>
                         <p className="text-lg text-gray-600 mt-2">
                             {projectDetails[project.name]?.description || 'Loading description...'}
                         </p>

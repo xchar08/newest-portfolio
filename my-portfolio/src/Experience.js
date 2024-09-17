@@ -49,12 +49,16 @@ const experienceData = [
 
 function Experience() {
     return (
-        <div className="relative flex flex-col items-center p-8">
-            <h1 className="text-4xl font-bold mb-4 text-center mt-32">Experience</h1>
+        <div className="relative flex flex-col items-center p-8" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Apply Fira Mono globally */}
+            <h1 className="text-4xl mb-4 mt-10 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Apply Times New Roman to h1 */}
+                Experience
+            </h1>
             {experienceData.map((item, index) => (
                 <div key={index} className="relative w-full sm:w-80 md:w-96 lg:w-1/2 xl:w-1/3 mx-4 my-4 bg-white rounded-lg shadow-lg">
                     <div className="p-6">
-                        <h2 className="text-2xl font-bold mb-2">{item.title}</h2>
+                        <h2 className="text-2xl font-bold mb-2" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Apply Times New Roman to h2 */}
+                            {item.title}
+                        </h2>
                         <h3 className="text-xl font-semibold mb-1">{item.company}</h3>
                         <p className="text-gray-600 mb-4">{item.duration}</p>
                         {/* Render each description line */}

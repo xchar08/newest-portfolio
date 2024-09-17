@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+/* Importing Google Fonts for Times New Roman-like (serif) and Monospace fonts */
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Fira+Mono:wght@400;500&display=swap');
+
+/* Apply EB Garamond for general text */
+body {
+    font-family: 'EB Garamond', serif; /* Default serif font for general text */
+    background-color: #f4f4f4; /* Light background for readability */
+    margin: 0;
+    padding: 0;
+    color: #333; /* Softer black for text */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Apply 'Times New Roman'-like font for all titles and headings */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Times New Roman', Times, serif !important; /* Enforce Times New Roman */
+    font-weight: bold;
+    text-transform: lowercase; /* Titles use lowercase */
+    font-size: 1.5em; /* Slightly larger font size for titles */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Apply monospace for links and special text */
+a, .special-text {
+    font-family: 'Fira Mono', monospace !important; /* Enforce monospace font for links */
+    color: #ff7043; /* Orange color for links */
+    text-transform: lowercase;
 }
 
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Style for the Timeline Header (explicit targeting) */
+.timeline-header {
+    font-family: 'Times New Roman', Times, serif !important; /* Enforce serif font */
+    font-weight: bold;
+    font-size: 2em; /* Adjust font size as needed */
+    text-transform: capitalize; /* Capitalize for Timeline header */
+}
+
+/* Header styling */
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+    text-transform: lowercase;
 }
 
-.App-link {
-  color: #61dafb;
+/* Styling for the App logo */
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+/* Adding animation for App logo spin */
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
