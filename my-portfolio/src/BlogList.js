@@ -1,7 +1,7 @@
 // BlogList.js
 
 import React, { useState } from 'react';
-import blogPosts from './BlogData';
+import blogPosts from './blogdata';
 
 const BlogList = () => {
   const [expandedPostId, setExpandedPostId] = useState(null);

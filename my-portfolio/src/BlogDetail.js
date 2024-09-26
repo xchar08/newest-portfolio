@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import blogPosts from './BlogData'; // Ensure the import matches the file name
+import blogPosts from './blogdata'; // Ensure the import matches the file name
 
 const BlogDetail = () => {
     const { id } = useParams();
