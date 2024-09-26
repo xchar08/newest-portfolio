@@ -3,9 +3,10 @@
     animation: spin 5s linear infinite; /* Increase duration to 5 seconds for a slower spin */
     border: 4px dashed rgba(255, 165, 0, 0.6); /* Dashed border with semi-transparent orange */
     border-radius: 50%;
-}
-
-@keyframes spin {
+  }
+  
+  @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
+  }
+  

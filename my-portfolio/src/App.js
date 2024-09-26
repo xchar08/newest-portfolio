@@ -1,39 +1,76 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+// App.js
+
+import React, { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { HashLink as ScrollLink } from 'react-router-hash-link';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import Home from './Home';
-import Timeline from './Timeline';
 import About from './About';
-import Projects from './Projects';
-import ProjectDetail from './ProjectDetail'; // Import the ProjectDetail component
 import Experience from './Experience';
+import Projects from './Projects';
+import Timeline from './Timeline';
 import Blog from './BlogList';
-import BlogDetail from './BlogDetail'; // Import the BlogDetail component
+import ProjectDetail from './ProjectDetail';
 
+// Custom scroll function to adjust for fixed header and extra whitespace
+const scrollWithOffset = (el) => {
+    const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
+    const yOffset = -144; // Negative offset to account for navbar and padding
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
+  };
+  
 function App() {
-    return (
-        <Router>
-            <nav className="flex justify-center space-x-4 p-4">
-                <Link to="/" className="text-gray-500">Home</Link>
-                <Link to="/about" className="text-gray-500">About</Link>
-                <Link to="/experience" className="text-gray-500">Experience</Link>
-                <Link to="/projects" className="text-gray-500">Projects</Link>
-                <Link to="/timeline" className="text-gray-500">Timeline</Link>
-                <Link to="/blog" className="text-gray-500">Blog</Link>
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'slide',
+    });
+  }, []);
 
-            </nav>
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/experience" element={<Experience />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/projects/:projectName" element={<ProjectDetail />} /> {/* Add dynamic route for project details */}
-                <Route path="/timeline" element={<Timeline />} />
-                <Route path="/blog" element={<Blog />} />
-                <Route path="/blog/:id" element={<BlogDetail />} /> {/* Route for blog detail */}
-                
-            </Routes>
-        </Router>
-    );
+  return (
+    <>
+      <nav className="fixed w-full z-10 bg-white flex justify-center space-x-4 p-4">
+        <ScrollLink smooth to="/#home" scroll={scrollWithOffset} className="text-gray-500 cursor-pointer">
+          Home
+        </ScrollLink>
+        <ScrollLink smooth to="/#about" scroll={scrollWithOffset} className="text-gray-500 cursor-pointer">
+          About
+        </ScrollLink>
+        <ScrollLink smooth to="/#experience" scroll={scrollWithOffset} className="text-gray-500 cursor-pointer">
+          Experience
+        </ScrollLink>
+        <ScrollLink smooth to="/#projects" scroll={scrollWithOffset} className="text-gray-500 cursor-pointer">
+          Projects
+        </ScrollLink>
+        <ScrollLink smooth to="/#timeline" scroll={scrollWithOffset} className="text-gray-500 cursor-pointer">
+          Timeline
+        </ScrollLink>
+        <ScrollLink smooth to="/#blog" scroll={scrollWithOffset} className="text-gray-500 cursor-pointer">
+          Blog
+        </ScrollLink>
+      </nav>
+      <div className="pt-16">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home />
+                <About />
+                <Experience />
+                <Projects />
+                <Timeline />
+                <Blog />
+              </>
+            }
+          />
+          <Route path="/projects/:projectName" element={<ProjectDetail />} />
+        </Routes>
+      </div>
+    </>
+  );
 }
 
 export default App;

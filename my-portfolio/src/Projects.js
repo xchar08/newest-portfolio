@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { fetchProjectDetails } from './githubUtils';
-import project1Img from './images/project1.png'; // Update paths as needed
-import battlegrounduta from './images/battleground-uta.png'; // Update paths as needed
-import genscript from './images/genscript.png'; // Update paths as needed
-import wip from './images/wip.png'; // Update paths as needed
-import networth from './images/networth.png'; // Update paths as needed
+// Projects.js
 
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { fetchProjectDetails } from './githubUtils';
+// Import your project images
+import project1Img from './images/project1.png';
+import battlegrounduta from './images/battleground-uta.png';
+import genscript from './images/genscript.png';
+import wip from './images/wip.png';
+import networth from './images/networth.png';
 
 const projects = [
     {
@@ -108,56 +111,79 @@ const projects = [
     },
     // Add more projects as needed
 ];
-
 const Projects = () => {
     const [projectDetails, setProjectDetails] = useState({});
-
+  
     useEffect(() => {
-        const fetchDetails = async () => {
-            const details = {};
-            for (const project of projects) {
-                const { description, readmeContent } = await fetchProjectDetails(project.repo);
-                details[project.name] = { description, readmeContent };
-            }
-            setProjectDetails(details);
-        };
-
-        fetchDetails();
+      const fetchDetails = async () => {
+        const details = {};
+        for (const project of projects) {
+          const { description } = await fetchProjectDetails(project.repo);
+          details[project.name] = { description };
+        }
+        setProjectDetails(details);
+      };
+  
+      fetchDetails();
     }, []);
-
+  
     return (
-        <div className="p-8 bg-white-100" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Fira Mono applied globally */}
-            <h1 className="text-4xl mt-10 mb-10 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Times New Roman for heading */}
-                Projects
-            </h1>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {projects.map((project) => (
-                    <div 
-                        key={project.name} 
-                        className="bg-white rounded-lg shadow-md p-6 flex flex-col items-center text-center"
-                    >
-                        <img src={project.image} alt={project.name} className="rounded-full h-32 w-32 object-cover mb-4" />
-                        <h2 className="text-2xl font-bold text-gray-800" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Times New Roman for project titles */}
-                            {project.name}
-                        </h2>
-                        <p className="text-lg text-gray-600 mt-2">
-                            {projectDetails[project.name]?.description || 'Loading description...'}
-                        </p>
-                        <div className="mt-4 flex gap-4">
-                            {project.liveLink && (
-                                <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600">
-                                    See Live
-                                </a>
-                            )}
-                            <a href={project.sourceCode} target="_blank" rel="noopener noreferrer" className="px-4 py-2 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900">
-                                Source Code
-                            </a>
-                        </div>
-                    </div>
-                ))}
+      <div
+        id="projects"
+        className="p-8 bg-white-100 pt-20" // Added pt-20
+        style={{ fontFamily: "'Fira Mono', monospace" }}
+      >
+        <h1
+          className="text-4xl mt-10 mb-10 text-center"
+          style={{ fontFamily: "'Times New Roman', Times, serif" }}
+          data-aos="fade-up"
+        >
+          Projects
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+          {projects.map((project) => (
+            <div
+              key={project.name}
+              className="bg-white rounded-lg shadow-md p-4 flex flex-col items-center text-center"
+              data-aos="fade-up"
+              style={{ maxWidth: '250px', margin: '0 auto' }}
+            >
+              <img src={project.image} alt={project.name} className="rounded-full h-32 w-32 object-cover mb-4" />
+              <Link
+                to={`/projects/${project.name}`}
+                className="text-2xl font-bold text-gray-800 hover:underline"
+                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+              >
+                {project.name}
+              </Link>
+              <p className="text-lg text-gray-600 mt-2">
+                {projectDetails[project.name]?.description || 'Loading description...'}
+              </p>
+              <div className="mt-4 flex gap-4">
+                {project.liveLink && (
+                  <a
+                    href={project.liveLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="px-4 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600"
+                  >
+                    See Live
+                  </a>
+                )}
+                <a
+                  href={project.sourceCode}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-4 py-2 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900"
+                >
+                  Source Code
+                </a>
+              </div>
             </div>
+          ))}
         </div>
+      </div>
     );
-};
-
-export default Projects;
+  };
+  
+  export default Projects;

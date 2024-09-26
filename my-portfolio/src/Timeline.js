@@ -89,67 +89,75 @@ const timelineData = [
 
 function Timeline() {
     const [activeIndex, setActiveIndex] = useState(null);
-
+  
     const handleToggle = (index) => {
-        setActiveIndex(activeIndex === index ? null : index);
+      setActiveIndex(activeIndex === index ? null : index);
     };
-
+  
     const renderContent = (content) => {
-        return (
-            <div className="ml-4">
-                {content.map((item, i) => {
-                    if (Array.isArray(item)) {
-                        // Render sub-bullets
-                        return (
-                            <ul key={i} className="list-disc list-inside ml-4">
-                                {item.map((subItem, j) => (
-                                    <li key={j} className="text-gray-700">{subItem}</li>
-                                ))}
-                            </ul>
-                        );
-                    } else {
-                        // Render main content without bullets
-                        return <div key={i} className="text-gray-700">{item}</div>;
-                    }
-                })}
-            </div>
-        );
-    };
-
-    return (
-        <div className="flex flex-col items-center p-8 h-3/4 bg-white" style={{ fontFamily: "'Fira Mono', monospace" }}> {/* Apply Fira Mono globally */}
-            <div className="flex flex-col justify-center w-full max-w-3xl mt-10 mb-auto">
-                <h1 className="text-4xl mb-8 text-center" style={{ fontFamily: "'Times New Roman', Times, serif" }}> {/* Apply Times New Roman to heading */}
-                    Timeline
-                </h1>
-                {timelineData.map((item, index) => (
-                    <div key={index} className="mb-4">
-                        <button
-                            onClick={() => handleToggle(index)}
-                            className="w-full flex items-center justify-between px-4 py-2 bg-white-200 rounded-lg shadow-md text-left font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
-                            style={{ fontFamily: "'Times New Roman', Times, serif" }} // Apply Times New Roman to buttons
-                        >
-                            <span>{item.season}</span>
-                            <svg
-                                className={`w-6 h-6 transform ${activeIndex === index ? 'rotate-180' : ''} transition-transform`}
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                stroke="currentColor"
-                            >
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </button>
-                        {activeIndex === index && (
-                            <div className="mt-2 px-4 py-2 bg-white rounded-lg shadow-inner">
-                                {renderContent(item.content)}
-                            </div>
-                        )}
-                    </div>
-                ))}
-            </div>
+      return (
+        <div className="ml-4">
+          {content.map((item, i) => {
+            if (Array.isArray(item)) {
+              // Render sub-bullets
+              return (
+                <ul key={i} className="list-disc list-inside ml-4">
+                  {item.map((subItem, j) => (
+                    <li key={j} className="text-gray-700">{subItem}</li>
+                  ))}
+                </ul>
+              );
+            } else {
+              // Render main content without bullets
+              return <div key={i} className="text-gray-700">{item}</div>;
+            }
+          })}
         </div>
+      );
+    };
+  
+    return (
+      <div
+        id="timeline"
+        className="flex flex-col items-center p-8 h-3/4 bg-white pt-20" // Added pt-20
+        style={{ fontFamily: "'Fira Mono', monospace" }}
+      >
+        <div className="flex flex-col justify-center w-full max-w-3xl mt-10 mb-auto">
+          <h1
+            className="text-4xl mb-8 text-center"
+            style={{ fontFamily: "'Times New Roman', Times, serif" }}
+            data-aos="fade-up"
+          >
+            Timeline
+          </h1>
+          {timelineData.map((item, index) => (
+            <div key={index} className="mb-4">
+              <button
+                onClick={() => handleToggle(index)}
+                className="w-full flex items-center justify-between px-4 py-2 bg-white-200 rounded-lg shadow-md text-left font-semibold text-gray-700 focus:outline-none focus:ring-2 focus:ring-orange-500"
+                style={{ fontFamily: "'Times New Roman', Times, serif" }}
+              >
+                <span>{item.season}</span>
+                <svg
+                  className={`w-6 h-6 transform ${activeIndex === index ? 'rotate-180' : ''} transition-transform`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              {activeIndex === index && (
+                <div className="mt-2 px-4 py-2 bg-white rounded-lg shadow-inner" data-aos="fade-up">
+                  {renderContent(item.content)}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     );
-}
-
-export default Timeline;
+  }
+  
+  export default Timeline;
