@@ -9,14 +9,13 @@ import Home from './Home';
 import About from './About';
 import Experience from './Experience';
 import Projects from './Projects';
-import Timeline from './Timeline';
 import Blog from './BlogList';
 import ProjectDetail from './ProjectDetail';
 
 // Custom scroll function to adjust for fixed header and extra whitespace
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-  const yOffset = -144; // Negative offset to account for navbar and padding
+  const yOffset = -90; //-144
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
 };
 
@@ -80,15 +79,6 @@ function App() {
             </ScrollLink>
             <ScrollLink
               smooth
-              to="/#experience"
-              scroll={scrollWithOffset}
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
-            >
-              Experience
-            </ScrollLink>
-            <ScrollLink
-              smooth
               to="/#projects"
               scroll={scrollWithOffset}
               onClick={closeMenu}
@@ -98,12 +88,12 @@ function App() {
             </ScrollLink>
             <ScrollLink
               smooth
-              to="/#timeline"
+              to="/#experience"
               scroll={scrollWithOffset}
               onClick={closeMenu}
               className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
             >
-              Timeline
+              Experience
             </ScrollLink>
             <ScrollLink
               smooth
@@ -126,9 +116,8 @@ function App() {
               <>
                 <Home />
                 <About />
-                <Experience />
                 <Projects />
-                <Timeline />
+                <Experience />
                 <Blog />
               </>
             }

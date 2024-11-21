@@ -3,17 +3,15 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchProjectDetails } from './githubUtils';
 import { motion } from 'framer-motion';
-import gsap from 'gsap';
 
 // Swiper Imports
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay, Keyboard, EffectCoverflow } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay, Keyboard } from 'swiper/modules';
 
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import 'swiper/css/effect-coverflow'; // Using Coverflow instead of Fade
 
 // Import your project images
 import project1Img from './images/project1.png';
@@ -63,6 +61,7 @@ const projects = [
 
 const Projects = () => {
     const [projectDetails, setProjectDetails] = useState({});
+    const [activeIndex, setActiveIndex] = useState(0); // Track active slide index
     const swiperRef = useRef(null); // Ref for Swiper instance
 
     useEffect(() => {
@@ -77,26 +76,6 @@ const Projects = () => {
 
         fetchDetails();
     }, []);
-
-    useEffect(() => {
-        // Initial GSAP animation for all slides
-        gsap.fromTo(
-            '.project-card',
-            { opacity: 0, y: 50 },
-            { opacity: 1, y: 0, duration: 1, stagger: 0.2, ease: 'power2.out' }
-        );
-    }, []);
-
-    // Function to animate a specific slide
-    const animateSlide = (slide) => {
-        if (slide) {
-            gsap.fromTo(
-                slide.querySelector('.project-card'),
-                { opacity: 0, y: 50 },
-                { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
-            );
-        }
-    };
 
     // Handlers to pause and resume autoplay on hover
     const handleMouseEnter = () => {
@@ -121,9 +100,10 @@ const Projects = () => {
             <h1 className="text-4xl mt-10 mb-10 text-center font-serif">Projects</h1>
 
             <Swiper
-                modules={[Navigation, Pagination, Autoplay, Keyboard, EffectCoverflow]}
+                modules={[Navigation, Pagination, Autoplay, Keyboard]}
                 spaceBetween={30}
-                slidesPerView={1.2} // Shows one full slide and part of the next
+                slidesPerView={1} // Default for small screens
+                centeredSlides={true} // Center the active slide
                 navigation={{
                     nextEl: '.swiper-button-next-custom',
                     prevEl: '.swiper-button-prev-custom',
@@ -136,62 +116,52 @@ const Projects = () => {
                 loop={true}
                 speed={1000} // Smooth transition speed
                 keyboard={{ enabled: true }} // Enable keyboard navigation
-                effect="coverflow" // Apply Coverflow effect
-                coverflowEffect={{
-                    rotate: 50,
-                    stretch: 0,
-                    depth: 100,
-                    modifier: 1,
-                    slideShadows: true,
-                }}
                 breakpoints={{
                     640: {
-                        slidesPerView: 1.2,
+                        slidesPerView: 1.5, // Slightly more than 1 for better visibility on small screens
                     },
                     768: {
-                        slidesPerView: 2.2,
+                        slidesPerView: 2, // Show 2 slides on medium screens
                     },
                     1024: {
-                        slidesPerView: 3.2,
+                        slidesPerView: 3, // Show 3 slides on large screens
                     },
                 }}
                 onSwiper={(swiper) => {
                     swiperRef.current = swiper;
                 }}
                 onSlideChange={(swiper) => {
-                    const activeSlide = swiper.slides[swiper.activeIndex];
-                    animateSlide(activeSlide);
+                    setActiveIndex(swiper.realIndex); // Update active index
                 }}
                 className="w-full"
             >
-                {projects.map((project, index) => (
-                    <SwiperSlide key={project.name}>
+                {projects.map((project) => {
+                    const cardContent = (
                         <motion.div
-                            className="bg-white project-card rounded-lg shadow-md p-4 flex flex-col items-center text-center transition-transform duration-300 hover:scale-105"
+                            className={`bg-white project-card rounded-lg shadow-md p-6 flex flex-col justify-between items-center text-center transition-transform duration-300 min-h-[200px]`}
                             whileHover={{ scale: 1.05 }}
                         >
-                            <img
-                                src={project.image}
-                                alt={`Screenshot of ${project.name} project`}
-                                className="rounded-lg h-32 w-full object-cover mb-2"
-                                loading="lazy"
-                            />
-                            <Link
-                                to={`/projects/${project.name}`}
-                                className="text-xl font-bold text-gray-800 hover:underline font-serif focus:outline-none focus:ring-2 focus:ring-blue-400"
-                            >
-                                {project.name}
-                            </Link>
-                            <p className="text-sm text-gray-600 mt-1">
-                                {projectDetails[project.name]?.description || 'Loading description...'}
-                            </p>
-                            <div className="mt-2 flex gap-2">
+                            <div className="flex flex-col items-center">
+                                <img
+                                    src={project.image}
+                                    alt={`Screenshot of ${project.name} project`}
+                                    className="rounded-lg h-40 w-full object-cover mb-4"
+                                    loading="lazy"
+                                />
+                                <h2 className="text-2xl font-bold text-gray-800 font-serif">
+                                    {project.name}
+                                </h2>
+                                <p className="text-sm sm:text-xs md:text-sm text-gray-600 mt-2 h-24 overflow-hidden">
+                                    {projectDetails[project.name]?.description || 'Loading description...'}
+                                </p>
+                            </div>
+                            <div className="mt-4 flex gap-3">
                                 {project.liveLink && (
                                     <a
                                         href={project.liveLink}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="px-2 py-1 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 text-xs focus:outline-none focus:ring-2 focus:ring-blue-400"
+                                        className="px-3 py-2 bg-blue-500 text-white font-semibold rounded hover:bg-blue-600 text-xs sm:text-[10px] md:text-xs focus:outline-none focus:ring-2 focus:ring-blue-400"
                                     >
                                         See Live
                                     </a>
@@ -200,21 +170,32 @@ const Projects = () => {
                                     href={project.sourceCode}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="px-2 py-1 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900 text-xs focus:outline-none focus:ring-2 focus:ring-gray-400"
+                                    className="px-3 py-2 bg-gray-800 text-white font-semibold rounded hover:bg-gray-900 text-xs sm:text-[10px] md:text-xs focus:outline-none focus:ring-2 focus:ring-gray-400"
                                 >
                                     Source Code
                                 </a>
                             </div>
                         </motion.div>
-                    </SwiperSlide>
-                ))}
+                    );
 
-                {/* Custom Navigation Buttons */}
-                <div className="swiper-button-prev-custom" aria-label="Previous Slide"></div>
-                <div className="swiper-button-next-custom" aria-label="Next Slide"></div>
+                    return (
+                        <SwiperSlide key={project.name}>
+                            <Link
+                                to={`/projects/${project.name}`}
+                                className="block w-full h-full"
+                                aria-label={`View details of ${project.name} project`}
+                            >
+                                {cardContent}
+                            </Link>
+                        </SwiperSlide>
+                    );
+                })}
+                <br/>
+                <br/>
             </Swiper>
         </div>
     );
+
 };
 
 export default Projects;
