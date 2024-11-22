@@ -1,24 +1,19 @@
-// BlogList.js
+// src/BlogList.js
 
-import React, { useState } from 'react';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import blogPosts from './blogdata';
 
 const BlogList = () => {
-  const [expandedPostId, setExpandedPostId] = useState(null);
-
-  const togglePostDetail = (id) => {
-    setExpandedPostId(expandedPostId === id ? null : id);
-  };
-
   return (
     <div
       id="blog"
-      className="p-8 pt-20 pb-80" // Added pt-20
+      className="p-8 pt-20 pb-80 bg-white" // White background for main container
       style={{ fontFamily: "'Fira Mono', monospace" }}
     >
       <div className="mt-10">
         <h1
-          className="text-4xl mb-8 text-center"
+          className="text-4xl mb-8 text-center text-gray-900"
           style={{ fontFamily: "'Times New Roman', Times, serif" }}
           data-aos="fade-up"
         >
@@ -28,30 +23,28 @@ const BlogList = () => {
           {blogPosts.map((post) => (
             <div
               key={post.id}
-              className="bg-white p-4 rounded-lg shadow-md"
+              className="bg-offwhite p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
               data-aos="fade-up"
             >
               <img
                 src={post.image}
                 alt={post.title}
                 className="w-full h-48 object-cover mb-4 rounded-lg"
+                loading="lazy"
               />
               <h2
-                className="text-2xl font-semibold mb-2"
+                className="text-2xl font-semibold mb-2 text-gray-800"
                 style={{ fontFamily: "'Times New Roman', Times, serif" }}
               >
                 {post.title}
               </h2>
-              <p className="text-gray-500 mb-2">{post.date}</p>
+              <p className="text-gray-500 mb-4">{post.date}</p>
               <p className="text-gray-700 mb-4">
-                {expandedPostId === post.id ? post.content : post.excerpt}
+                {post.excerpt}
               </p>
-              <button
-                onClick={() => togglePostDetail(post.id)}
-                className="text-blue-500 hover:underline"
-              >
-                {expandedPostId === post.id ? 'Read Less' : 'Read More'}
-              </button>
+              <Link to={`/post/${post.id}`} className="text-orange-500 hover:underline font-semibold">
+                Read More
+              </Link>
             </div>
           ))}
         </div>

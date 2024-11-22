@@ -1,3 +1,5 @@
+// src/App.js
+
 import React, { useState, useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { HashLink as ScrollLink } from 'react-router-hash-link';
@@ -9,13 +11,14 @@ import Home from './Home';
 import About from './About';
 import Experience from './Experience';
 import Projects from './Projects';
-import Blog from './BlogList';
+import BlogList from './BlogList'; // Renamed for clarity
+import BlogDetail from './BlogDetail'; // New Import
 import ProjectDetail from './ProjectDetail';
 
 // Custom scroll function to adjust for fixed header and extra whitespace
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-  const yOffset = -90; //-144
+  const yOffset = -90; // Adjust as needed
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
 };
 
@@ -39,9 +42,9 @@ function App() {
 
   return (
     <>
-      <nav className="fixed w-full z-10 bg-white p-4">
+      <nav className="fixed w-full z-10 bg-white p-4 shadow">
         {/* Flex container for centered links */}
-        <div className="max-w-7xl mx-auto flex items-center justify-center">
+        <div className="max-w-7xl mx-auto flex items-center justify-center relative">
           {/* Hamburger icon for mobile */}
           <div className="md:hidden absolute right-4">
             <button
@@ -57,14 +60,14 @@ function App() {
           <div
             className={`${
               isOpen ? 'block' : 'hidden'
-            } w-full md:flex md:items-center md:justify-center md:space-x-4`}
+            } w-full md:flex md:items-center md:justify-center md:space-x-6`}
           >
             <ScrollLink
               smooth
               to="/#home"
               scroll={scrollWithOffset}
               onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
+              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
               Home
             </ScrollLink>
@@ -73,7 +76,7 @@ function App() {
               to="/#about"
               scroll={scrollWithOffset}
               onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
+              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
               About
             </ScrollLink>
@@ -82,7 +85,7 @@ function App() {
               to="/#projects"
               scroll={scrollWithOffset}
               onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
+              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
               Projects
             </ScrollLink>
@@ -91,7 +94,7 @@ function App() {
               to="/#experience"
               scroll={scrollWithOffset}
               onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
+              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
               Experience
             </ScrollLink>
@@ -100,7 +103,7 @@ function App() {
               to="/#blog"
               scroll={scrollWithOffset}
               onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 cursor-pointer"
+              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
               Blog
             </ScrollLink>
@@ -108,7 +111,7 @@ function App() {
         </div>
       </nav>
 
-      <div className="pt-16">
+      <div className="pt-20"> {/* Adjusted padding-top to accommodate fixed nav */}
         <Routes>
           <Route
             path="/"
@@ -118,11 +121,14 @@ function App() {
                 <About />
                 <Projects />
                 <Experience />
-                <Blog />
+                <BlogList /> {/* Updated component */}
               </>
             }
           />
+          <Route path="/post/:id" element={<BlogDetail />} /> {/* New Route */}
           <Route path="/projects/:projectName" element={<ProjectDetail />} />
+          {/* Add a fallback route for 404 if desired */}
+          <Route path="*" element={<div className="p-8 text-center">Page Not Found</div>} />
         </Routes>
       </div>
     </>

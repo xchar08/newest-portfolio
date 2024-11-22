@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       // Extend the theme as needed
       fontFamily: {
+        sans: ['Fira Mono', 'monospace'], // Ensuring Fira Mono is used globally
         serif: ['EB Garamond', 'serif'],
         mono: ['Fira Mono', 'monospace'],
         'times-new-roman': ['"Times New Roman"', 'Times', 'serif'],
@@ -30,8 +31,12 @@ module.exports = {
           500: '#3b82f6',
           600: '#2563eb',
         },
+        offwhite: '#f8f8f8', // Customize as desired
       },
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'), // For the prose class
+    // Add other plugins if needed
+  ],
 }
