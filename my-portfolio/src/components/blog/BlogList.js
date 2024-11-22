@@ -1,10 +1,13 @@
-// src/BlogList.js
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import blogPosts from './blogdata';
 
 const BlogList = () => {
+  // Scroll to top when the component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   // Sort blogPosts by date in descending order
   const sortedBlogPosts = [...blogPosts].sort((a, b) => new Date(b.id) - new Date(a.id));
 

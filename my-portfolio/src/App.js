@@ -90,7 +90,7 @@ function App() {
               Experience
             </ScrollLink>
             <Link
-              to="/blog"
+              to="/blog/" 
               onClick={closeMenu}
               className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
