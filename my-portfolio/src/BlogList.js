@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import blogPosts from './blogdata';
 
 const BlogList = () => {
+  // Sort blogPosts by date in descending order
+  const sortedBlogPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+
   return (
     <div
       id="blog"
@@ -20,7 +23,7 @@ const BlogList = () => {
           Blog
         </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {blogPosts.map((post) => (
+          {sortedBlogPosts.map((post) => (
             <div
               key={post.id}
               className="bg-offwhite p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
