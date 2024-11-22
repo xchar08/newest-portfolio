@@ -14,11 +14,11 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // Import your project images
-import project1Img from './images/project1.png';
-import battlegrounduta from './images/battleground-uta.png';
-import genscript from './images/genscript.png';
-import wip from './images/wip.png';
-import networth from './images/networth.png';
+import project1Img from '../../assets/images/projects/project1.png';
+import battlegrounduta from '../../assets/images/projects/battleground-uta.png';
+import genscript from '../../assets/images/projects/genscript.png';
+import wip from '../../assets/images/projects/wip.png';
+import networth from '../../assets/images/projects/networth.png';
 
 const projects = [
     {

@@ -1,5 +1,5 @@
 // src/blogData.js
-const blogPosts = [
+const ueblogPosts = [
     {
         id: 1,
         title: "Welcome to My Journey: Software Engineering and Physics at UT Arlington",
@@ -6863,15 +6863,6 @@ End of section!
   image: "/images/blog95.jpg"
 }
 
-
-
-
-
-
-
-
-
-
 ];
 
-export default blogPosts;
+export default ueblogPosts;

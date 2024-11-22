@@ -6,7 +6,7 @@ import blogPosts from './blogdata';
 
 const BlogList = () => {
   // Sort blogPosts by date in descending order
-  const sortedBlogPosts = [...blogPosts].sort((a, b) => new Date(b.date) - new Date(a.date));
+  const sortedBlogPosts = [...blogPosts].sort((a, b) => new Date(b.id) - new Date(a.id));
 
   return (
     <div

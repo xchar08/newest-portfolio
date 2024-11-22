@@ -5,13 +5,13 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
 
-import Home from './Home';
-import About from './About';
-import Experience from './Experience';
-import Projects from './Projects';
-import BlogList from './BlogList'; // Blog list component
-import BlogDetail from './BlogDetail'; // Blog detail component
-import ProjectDetail from './ProjectDetail';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Experience from './components/experience/Experience';
+import Projects from './components/projects/Projects';
+import BlogList from './components/blog/BlogList'; // Blog list component
+import BlogDetail from './components/blog/BlogDetail'; // Blog detail component
+import ProjectDetail from './components/projects/ProjectDetail';
 
 // Custom scroll function
 const scrollWithOffset = (el) => {

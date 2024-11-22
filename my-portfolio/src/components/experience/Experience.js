@@ -1,8 +1,8 @@
 import React from 'react';
-import mitesMostecImg from '../src/images/mites_mostec.png';
-import sansgiacImg from '../src/images/sans_giac.png';
-import bellflightImg from '../src/images/bell_flight.png';
-import ericssonImg from '../src/images/ericsson.png';
+import mitesImg from '../../assets/images/experience/mites.svg';
+import sansImg from '../../assets/images/experience/sans.svg';
+import bellImg from '../../assets/images/experience/bell.svg';
+import ericssonImg from '../../assets/images/experience/ericsson.svg';
 
 // Updated experienceData with image paths
 const experienceData = [
@@ -22,7 +22,7 @@ const experienceData = [
         title: "Cybersecurity, Software Development, IT Intern",
         company: "Bell Flight (Textron)",
         duration: "September 2021 - January 2022",
-        image: bellflightImg, // Add the image path here
+        image: bellImg, // Add the image path here
         description: [
             "+ Successfully completed legal holds.",
             "+ Converted a MySQL application to MSSQL and PHP.",
@@ -36,7 +36,7 @@ const experienceData = [
         title: "SEC275: Foundations: Computers, Technology, & Security",
         company: "SANS/GIAC",
         duration: "June 2021 - September 2022",
-        image: sansgiacImg, // Add the image path here
+        image: sansImg, // Add the image path here
         description: [
             "+ Completed professional training covering Logic and Data Manipulation, Data Storage and Representation, Cloud Computing, Linux, Networking, Web Servers, Windows, Programming, Encryption, and Exploitation.",
         ]
@@ -45,7 +45,7 @@ const experienceData = [
         title: "Machine Learning + Science Writing",
         company: "Massachusetts Institute of Technology (MITES/MOSTEC)",
         duration: "June 2021 - December 2021",
-        image: mitesMostecImg, // Add the image path here
+        image: mitesImg, // Add the image path here
         description: [
             "+ Attended the selective 6-month MIT MOSTEC program, where 300 students were selected from over 6,000 applicants.",
             "+ Completed coursework in Machine Learning and Science Writing, including submitting a formal science article that was recognized as one of the best.",
