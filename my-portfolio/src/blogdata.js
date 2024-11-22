@@ -48,7 +48,7 @@ I'm always down to connect and collaborate:
 - **LinkedIn**: [linkedin.com/in/jeremiahpitts](https://www.linkedin.com/in/jeremiahpitts)
 - **GitHub**: [github.com/xchar08](https://github.com/xchar08)
 
-Thanks for stopping by! Stay tuned for upcoming posts where we'll dive into React Hooks, Puppeteer for web scraping, building APIs with Express.js, and styling with Tailwind CSS!
+Thanks for stopping by! Stay tuned for upcoming posts where we'll dive into [React Hooks](/post/2), [Puppeteer](/post/3) for web scraping, [building APIs](/post/4) with Express.js, and [styling](/post/5) with Tailwind CSS!
 
 Catch you later,
 
@@ -88,27 +88,27 @@ Before Hooks, managing state and lifecycle methods in functional components was 
 
    Adds state to your functional components.
 
-   \\\`\`\`javascript
+   \`\`\`javascript
    const [count, setCount] = useState(0);
-   \\\`\`\`
+   \`\`\`
 
 2. **useEffect**
 
-   Handles side effects, replacing lifecycle methods like \\\`componentDidMount\\\`.
+   Handles side effects, replacing lifecycle methods like \`componentDidMount\`.
 
-   \\\`\`\`javascript
+   \`\`\`javascript
    useEffect(() => {
      document.title = \`You clicked \${count} times\`;
    }, [count]);
-   \\\`\`\`
+   \`\`\`
 
 3. **useContext**
 
    Accesses React context without the hassle of wrapping your component.
 
-   \\\`\`\`javascript
+   \`\`\`javascript
    const value = useContext(MyContext);
-   \\\`\`\`
+   \`\`\`
 
 ## **Building Custom Hooks**
 
@@ -131,14 +131,14 @@ function useFetch(url) {
 ## **Best Practices**
 
 - **Rule of Hooks**: Only call Hooks at the top level and from React functions.
-- **Dependencies**: Always specify dependencies in \\\`useEffect\\\` to avoid unexpected behaviors.
-- **Performance**: Use \\\`useMemo\\\` and \\\`useCallback\\\` to memoize expensive calculations.
+- **Dependencies**: Always specify dependencies in \`useEffect\` to avoid unexpected behaviors.
+- **Performance**: Use \`useMemo\` and \`useCallback\` to memoize expensive calculations.
 
 ## **Conclusion**
 
 React Hooks make your code cleaner and more maintainable. Embrace them, and you'll build more efficient React components with ease.
 
-**Stay tuned** for my next post on **web scraping with Puppeteer**!
+**Stay tuned** for [my next post](/post/3) on **web scraping with Puppeteer**!
 
 Peace out,
 
@@ -203,21 +203,21 @@ const puppeteer = require('puppeteer');
 
 - **Handling Authentication**
 
-  \\\`\`\`javascript
+  \`\`\`javascript
   await page.authenticate({ username: 'user', password: 'pass' });
-  \\\`\`\`
+  \`\`\`
 
 - **Dealing with Dynamic Content**
 
-  \\\`\`\`javascript
+  \`\`\`javascript
   await page.waitForSelector('#dynamic-content');
-  \\\`\`\`
+  \`\`\`
 
 - **Taking Screenshots**
 
-  \\\`\`\`javascript
+  \`\`\`javascript
   await page.screenshot({ path: 'screenshot.png' });
-  \\\`\`\`
+  \`\`\`
 
 ## **Ethical Considerations**
 
@@ -229,7 +229,7 @@ const puppeteer = require('puppeteer');
 
 Puppeteer makes web scraping and browser automation a breeze. Whether you're collecting data or testing web apps, it's a powerful tool to have in your arsenal.
 
-**Next up**, we'll explore **building APIs with Express.js**.
+**Next up**, [we'll explore](/post/4) **building APIs with Express.js**.
 
 Happy Scraping!
 
@@ -327,10 +327,10 @@ app.use((err, req, res, next) => {
 
 - **Helmet Middleware**: Secures your app by setting various HTTP headers.
 
-  \\\`\`\`javascript
+  \`\`\`javascript
   const helmet = require('helmet');
   app.use(helmet());
-  \\\`\`\`
+  \`\`\`
 
 - **Input Validation**: Always validate and sanitize user input.
 
@@ -338,10 +338,10 @@ app.use((err, req, res, next) => {
 
 - **Compression**: Use gzip to reduce response sizes.
 
-  \\\`\`\`javascript
+  \`\`\`javascript
   const compression = require('compression');
   app.use(compression());
-  \\\`\`\`
+  \`\`\`
 
 - **Caching**: Implement caching strategies to boost performance.
 
@@ -349,7 +349,7 @@ app.use((err, req, res, next) => {
 
 Express.js is a powerhouse for building scalable and efficient web applications. Its simplicity and flexibility make it a favorite among developers, whether you're just starting or are a seasoned pro.
 
-In my next post, we'll dive into **styling with Tailwind CSS**.
+In my next post, [we'll dive into](/post/5) **styling with Tailwind CSS**.
 
 Keep Coding!
 
@@ -392,7 +392,7 @@ npx tailwindcss init
 
 ### **Configuration**
 
-Customize your Tailwind setup in the \\\`tailwind.config.js\\\` file.
+Customize your Tailwind setup in the \`tailwind.config.js\` file.
 
 \`\`\`javascript
 module.exports = {
@@ -424,20 +424,20 @@ module.exports = {
 
 ## **Key Features**
 
-- **Utility Classes**: Hundreds of classes like \\\`mt-4\\\`, \\\`text-center\\\`, \\\`shadow-lg\\\`.
+- **Utility Classes**: Hundreds of classes like \`mt-4\`, \`text-center\`, \`shadow-lg\`.
 - **Responsive Design**: Prefix utilities with breakpoint modifiers.
 
-  \\\`\`\`html
+  \`\`\`html
   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6"></div>
-  \\\`\`\`
+  \`\`\`
 
 - **State Variants**: Apply styles on hover, focus, and more.
 
-  \\\`\`\`html
+  \`\`\`html
   <button class="bg-blue-500 hover:bg-blue-700">
     Hover Me
   </button>
-  \\\`\`\`
+  \`\`\`
 
 ## **Customization**
 
