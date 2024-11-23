@@ -14,11 +14,12 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // Import your project images
-import project1Img from '../../assets/images/projects/project1.png';
+import galaga from '../../assets/images/projects/galaga.png';
 import battlegrounduta from '../../assets/images/projects/battleground-uta.png';
 import genscript from '../../assets/images/projects/genscript.png';
-import wip from '../../assets/images/projects/wip.png';
 import networth from '../../assets/images/projects/networth.png';
+import mavgrades from '../../assets/images/projects/mavgrades.png';
+
 
 const projects = [
     {
@@ -36,13 +37,6 @@ const projects = [
         sourceCode: "https://github.com/xchar08/battleground-uta",
     },
     {
-        name: "UTA Swarm (wip)",
-        repo: "xchar08/UTA-Swarm",
-        image: wip,
-        liveLink: null,
-        sourceCode: "https://github.com/xchar08/UTA-Swarm",
-    },
-    {
         name: "NetWorth",
         repo: "xchar08/networth",
         image: networth,
@@ -52,9 +46,16 @@ const projects = [
     {
         name: "Greenfoot Galaga",
         repo: "xchar08/java-oop-greenfoot",
-        image: project1Img,
+        image: galaga,
         liveLink: "https://www.greenfoot.org/scenarios/26902",
         sourceCode: "https://github.com/xchar08/java-oop-greenfoot",
+    },
+    {
+        name: "Mavgrades",
+        repo: "acmuta/mavgrades",
+        image: mavgrades,
+        liveLink: "https://www.mavgrades.com/",
+        sourceCode: "https://github.com/acmuta/mavgrades",
     },
     // Add the remaining projects...
 ];
@@ -148,8 +149,15 @@ const Projects = () => {
                                     className="rounded-lg h-40 w-full object-cover mb-4"
                                     loading="lazy"
                                 />
+                                {/* Project title wrapped with Link */}
                                 <h2 className="text-2xl font-bold text-gray-800 font-serif">
-                                    {project.name}
+                                    <Link
+                                        to={`/projects/${project.name}`}
+                                        aria-label={`View details of ${project.name} project`}
+                                        className="hover:underline text-black-600"
+                                    >
+                                        {project.name}
+                                    </Link>
                                 </h2>
                                 <p className="text-sm sm:text-xs md:text-sm text-gray-600 mt-2 h-24 overflow-hidden">
                                     {projectDetails[project.name]?.description || 'Loading description...'}
@@ -180,13 +188,7 @@ const Projects = () => {
 
                     return (
                         <SwiperSlide key={project.name}>
-                            <Link
-                                to={`/projects/${project.name}`}
-                                className="block w-full h-full"
-                                aria-label={`View details of ${project.name} project`}
-                            >
-                                {cardContent}
-                            </Link>
+                            <div className="block w-full h-full">{cardContent}</div>
                         </SwiperSlide>
                     );
                 })}
