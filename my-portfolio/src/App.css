@@ -113,3 +113,24 @@
 a:hover {
     @apply underline;
 }
+
+/* In your CSS file or within a <style> tag if using CSS-in-JS */
+
+.prose ol {
+    list-style: decimal inside;
+  }
+  
+  .prose ol li {
+    margin-top: 0.25rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .prose a {
+    color: #f97316; /* Tailwind's orange-500 color */
+    text-decoration: none;
+  }
+  
+  .prose a:hover {
+    text-decoration: underline;
+  }
+  
