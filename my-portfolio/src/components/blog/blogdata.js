@@ -19,8 +19,6 @@ const blogPosts = [
 
 **Excerpt:** An introduction to who I am, my passions, and what you can expect from my blog.
 
-![Blog Image](/images/blog1.jpg)
-
 **Hey there!**
 
 Welcome to my blog! I'm **Jeremiah Pitts**, juggling a double major in **Software Engineering** and **Physics** at **The University of Texas at Arlington**, with a minor in **Mathematics**. If you're into robotics, machine learning, cybersecurity, or just nerding out over tech and science, you're in the right place.
