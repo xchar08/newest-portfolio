@@ -9,6 +9,7 @@ import Home from './components/home/Home';
 import About from './components/about/About';
 import Experience from './components/experience/Experience';
 import Projects from './components/projects/Projects';
+import Skills from './components/skills/Skills';
 import BlogList from './components/blog/BlogList'; // Blog list component
 import BlogDetail from './components/blog/BlogDetail'; // Blog detail component
 import ProjectDetail from './components/projects/ProjectDetail';
@@ -82,6 +83,15 @@ function App() {
             </ScrollLink>
             <ScrollLink
               smooth
+              to="/#skills"
+              scroll={scrollWithOffset}
+              onClick={closeMenu}
+              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
+            >
+              Skills
+            </ScrollLink>
+            <ScrollLink
+              smooth
               to="/#experience"
               scroll={scrollWithOffset}
               onClick={closeMenu}
@@ -109,6 +119,7 @@ function App() {
                 <Home />
                 <About />
                 <Projects />
+                <Skills />
                 <Experience />
               </>
             }
