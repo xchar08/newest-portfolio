@@ -18,11 +18,9 @@ import {
   SiTensorflow,
   SiDocker,
   SiKubernetes,
-  SiAmazon, // Alternative AWS icon
+  SiAmazon,
   SiMongodb,
 } from 'react-icons/si';
-// Optionally import a generic cloud icon
-// import { SiCloud } from 'react-icons/si';
 
 const skillsData = [
   { name: 'Python', icon: <FaPython /> },
@@ -39,26 +37,24 @@ const skillsData = [
   { name: 'Linux', icon: <FaLinux /> },
   { name: 'Docker', icon: <SiDocker /> },
   { name: 'Kubernetes', icon: <SiKubernetes /> },
-  { name: 'AWS', icon: <SiAmazon /> }, // Updated icon
+  { name: 'AWS', icon: <SiAmazon /> },
   { name: 'MongoDB', icon: <SiMongodb /> },
-  // Alternatively, use a generic cloud icon
-  // { name: 'AWS', icon: <SiCloud /> },
 ];
 
 const Skills = () => {
   return (
     <section
       id="skills"
-      className="pt-40 pb-60 bg-white" 
+      className="pt-40 pb-60 bg-white"
       data-aos="fade-up"
     >
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="max-w-7xl mx-auto px-4">
         <h1
-            className="text-4xl mb-4 mt-10 text-center"
-            style={{ fontFamily: "'Times New Roman', Times, serif" }}
-            data-aos="fade-up"
+          className="text-4xl mb-4 mt-10 text-center"
+          style={{ fontFamily: "'Times New Roman', Times, serif" }}
+          data-aos="fade-up"
         >
-            Skills
+          Skills
         </h1>
         <div className="flex flex-wrap justify-center">
           {skillsData.map((skill, index) => (

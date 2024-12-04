@@ -98,8 +98,9 @@ const Projects = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
         >
-            <h1 className="text-4xl mt-10 mb-10 text-center font-serif">Projects</h1>
-
+            <h1 className="text-4xl mt-10 mb-10 text-center font-serif" data-aos="fade-up">
+                Projects
+            </h1>
             <Swiper
                 modules={[Navigation, Pagination, Autoplay, Keyboard]}
                 spaceBetween={30}

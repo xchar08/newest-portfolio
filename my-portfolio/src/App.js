@@ -10,14 +10,14 @@ import About from './components/about/About';
 import Experience from './components/experience/Experience';
 import Projects from './components/projects/Projects';
 import Skills from './components/skills/Skills';
-import BlogList from './components/blog/BlogList'; // Blog list component
-import BlogDetail from './components/blog/BlogDetail'; // Blog detail component
+import BlogList from './components/blog/BlogList'; 
+import BlogDetail from './components/blog/BlogDetail'; 
 import ProjectDetail from './components/projects/ProjectDetail';
 
 // Custom scroll function
 const scrollWithOffset = (el) => {
   const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-  const yOffset = -90;
+  const yOffset = -90; // adjust if needed
   window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
 };
 
@@ -100,7 +100,7 @@ function App() {
               Experience
             </ScrollLink>
             <Link
-              to="/blog/" 
+              to="/blog" 
               onClick={closeMenu}
               className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
             >
