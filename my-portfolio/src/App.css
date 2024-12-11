@@ -3,6 +3,7 @@
 /* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Fira+Mono:wght@400;500&display=swap');
 
+
 /* Apply EB Garamond for general text using Tailwind's @layer directive */
 @layer base {
     body {

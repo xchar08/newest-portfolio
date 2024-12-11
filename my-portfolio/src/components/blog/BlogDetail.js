@@ -12,19 +12,15 @@ import 'katex/dist/katex.min.css';        // KaTeX CSS for styling mathematical 
 
 // Import the syntax highlighter and desired theme
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism'; // You can choose any other theme you prefer
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism'; 
 
 // Import HashLink for smooth scrolling
 import { HashLink } from 'react-router-hash-link';
 
 const BlogDetail = () => {
-  // Extract the 'id' parameter from the URL
   const { id } = useParams();
-
-  // Find the blog post with the matching 'id'
   const post = blogPosts.find((p) => p.id === parseInt(id, 10));
 
-  // If no post is found, display a "Post not found" message
   if (!post) {
     return (
       <div className="p-8 text-center text-gray-500">
@@ -33,7 +29,6 @@ const BlogDetail = () => {
     );
   }
 
-  // Custom renderer for code blocks and links
   const renderers = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '');
@@ -53,13 +48,24 @@ const BlogDetail = () => {
       );
     },
     a({ href, children, ...props }) {
+      // If it's an internal hash link, use HashLink with a custom scroll offset
       if (href.startsWith('#')) {
         return (
-          <HashLink smooth to={href} {...props}>
+          <HashLink
+            smooth
+            to={href}
+            scroll={el => {
+              const yOffset = -100; // Adjust this value for desired offset
+              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({top: y, behavior: 'smooth'});
+            }}
+            {...props}
+          >
             {children}
           </HashLink>
         );
       }
+      // Otherwise, just render a normal link
       return (
         <a href={href} {...props}>
           {children}
@@ -93,14 +99,11 @@ const BlogDetail = () => {
         />
 
         {/* Blog Post Content */}
-        <div
-          className="prose prose-lg max-w-none bg-white p-6 rounded-lg shadow-md"
-          // The 'prose' class is from Tailwind CSS Typography plugin for better styling
-        >
+        <div className="prose prose-lg max-w-none bg-white p-6 rounded-lg shadow-md">
           <ReactMarkdown
-            components={renderers} // Use custom renderers for code blocks and links
-            remarkPlugins={[remarkGfm, remarkMath, remarkSlug]} // Enable Markdown, Math syntax, and add slugs
-            rehypePlugins={[rehypeKatex]} // Enable LaTeX rendering
+            components={renderers}
+            remarkPlugins={[remarkGfm, remarkMath, remarkSlug]}
+            rehypePlugins={[rehypeKatex]}
           >
             {post.content}
           </ReactMarkdown>
