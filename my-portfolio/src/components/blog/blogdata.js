@@ -2569,12 +2569,12 @@ The future of finance isn’t just about speed or fancy apps. It’s about makin
 {
   id: 8,
   title: "Embarking on a Career in Quantitative Finance: A Comprehensive Guide",
-  date: "April 27, 2024",
+  date: "December 12, 2024",
   excerpt: "An in-depth exploration of quantitative finance, outlining how to start learning, essential skills, and practical examples with code to prepare for a successful career.",
   content: `
 # Embarking on a Career in Quantitative Finance: A Comprehensive Guide
 
-**Date:** April 27, 2024  
+**Date:** December 12, 2024  
 **Excerpt:** An in-depth exploration of quantitative finance, outlining how to start learning, essential skills, and practical examples with code to prepare for a successful career.
 
 ---
