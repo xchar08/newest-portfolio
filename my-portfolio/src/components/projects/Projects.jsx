@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchProjectDetails, fetchProjectLanguages } from './githubUtils';
 
-// Import your project images
+// Import images
 import galaga from '../../assets/images/projects/galaga.png';
 import battlegrounduta from '../../assets/images/projects/battleground-uta.png';
 import genscript from '../../assets/images/projects/genscript.png';
@@ -66,7 +66,6 @@ const initialProjects = [
   },
 ];
 
-// Language dot component
 const LanguageDot = ({ lang }) => {
   const dotColor = languageColorMap[lang] || 'bg-gray-400';
   return (
@@ -115,7 +114,7 @@ const Projects = () => {
   }, [activeCategory, searchTerm, projects]);
 
   return (
-    <div className="pt-20 pb-16 bg-white min-h-screen">
+    <div className="pt-20 pb-16 min-h-screen transition-colors duration-300">
       {/* Search Bar */}
       <div className="flex justify-center mb-6 px-6">
         <input
@@ -127,7 +126,7 @@ const Projects = () => {
         />
       </div>
 
-      {/* Filter Tags (match HR width) */}
+      {/* Filter Tags */}
       <div className="w-3/4 mx-auto flex flex-wrap gap-2 justify-center mb-10">
         {categories.map((cat) => (
           <button
@@ -170,12 +169,12 @@ const Projects = () => {
                   {project.category || 'Uncategorized'}
                 </p>
                 <h2 className="text-xl font-bold mb-2">{project.name}</h2>
-                <p className="text-gray-700 mb-2">
+                <p className="mb-2">
                   {project.description || 'No description available...'}
                 </p>
                 {/* Language row with dividing lines */}
                 {project.languages && project.languages.length > 0 && (
-                  <div className="flex flex-wrap items-center space-x-3 text-sm text-gray-800">
+                  <div className="flex flex-wrap items-center space-x-3 text-sm">
                     {project.languages.map((lang, langIndex) => (
                       <React.Fragment key={lang}>
                         {langIndex > 0 && <span className="text-gray-300">|</span>}

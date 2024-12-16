@@ -1,4 +1,4 @@
-// src/BlogDetail.js
+// src/components/blog/BlogDetail.js
 
 import React from 'react';
 import { useParams } from 'react-router-dom';
@@ -19,23 +19,14 @@ const BlogDetail = () => {
   const post = blogPosts.find((p) => p.id === parseInt(id, 10));
 
   if (!post) {
-    return (
-      <div className="p-8 text-center text-gray-500">
-        Post not found
-      </div>
-    );
+    return <div className="p-8 text-center text-gray-500">Post not found</div>;
   }
 
   const renderers = {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '');
       return !inline && match ? (
-        <SyntaxHighlighter
-          style={okaidia}
-          language={match[1]}
-          PreTag="div"
-          {...props}
-        >
+        <SyntaxHighlighter style={okaidia} language={match[1]} PreTag="div" {...props}>
           {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       ) : (
@@ -45,13 +36,12 @@ const BlogDetail = () => {
       );
     },
     a({ href, children, ...props }) {
-      // If hash link, use HashLink with smooth scroll
       if (href.startsWith('#')) {
         return (
           <HashLink
             smooth
             to={href}
-            scroll={el => {
+            scroll={(el) => {
               const yOffset = -100;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
@@ -62,7 +52,6 @@ const BlogDetail = () => {
           </HashLink>
         );
       }
-      // Otherwise external link
       return (
         <a href={href} {...props}>
           {children}
@@ -72,14 +61,11 @@ const BlogDetail = () => {
   };
 
   return (
-    <div
-      className="pt-20 pb-10 min-h-screen bg-white"
-      style={{ fontFamily: "'Fira Mono', monospace" }}
-    >
+    <div className="pt-20 pb-10 min-h-screen transition-colors duration-300">
       <div className="max-w-4xl mx-auto px-4">
         {/* Title */}
         <h1
-          className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 leading-tight"
+          className="text-4xl md:text-5xl font-bold mb-2 leading-tight"
           style={{ fontFamily: "'Times New Roman', Times, serif" }}
         >
           {post.title}
@@ -88,7 +74,7 @@ const BlogDetail = () => {
         {/* Excerpt below title */}
         {post.excerpt && (
           <p
-            className="text-xl text-gray-700 mb-6 leading-relaxed"
+            className="text-xl mb-6 leading-relaxed"
             style={{ fontFamily: "'Times New Roman', Times, serif" }}
           >
             {post.excerpt}
@@ -96,9 +82,9 @@ const BlogDetail = () => {
         )}
 
         {/* Date */}
-        <p className="text-sm text-gray-500 mb-8">{post.date}</p>
+        <p className="text-sm opacity-70 mb-8">{post.date}</p>
 
-        {/* Cropped Feature Image */}
+        {/* Feature Image */}
         <div className="flex justify-center mb-10">
           <div className="w-full max-w-3xl h-72 overflow-hidden rounded-lg">
             <img
@@ -109,11 +95,8 @@ const BlogDetail = () => {
           </div>
         </div>
 
-        {/* Blog Content */}
-        <div
-          className="prose prose-lg max-w-none"
-          style={{ fontFamily: "'Times New Roman', Times, serif" }}
-        >
+        {/* Markdown Content */}
+        <div className="prose prose-lg max-w-none dark:prose-invert transition-colors duration-300">
           <ReactMarkdown
             components={renderers}
             remarkPlugins={[remarkGfm, remarkMath, remarkSlug]}

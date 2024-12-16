@@ -1,5 +1,4 @@
-// About.js
-
+// src/components/about/About.js
 import React from 'react';
 import {
   FaPython,
@@ -28,7 +27,7 @@ import {
   SiMongodb,
 } from 'react-icons/si';
 
-// Full skillsData from your Skills.js
+// Skills Data
 const skillsData = [
   { name: 'Python', icon: <FaPython /> },
   { name: 'Java', icon: <FaJava /> },
@@ -50,7 +49,7 @@ const skillsData = [
 
 const About = () => {
   return (
-    <section className="min-h-screen bg-white text-black py-12 px-6 flex flex-col items-center">
+    <section className="min-h-screen py-12 px-6 flex flex-col items-center transition-colors duration-300">
       <h1
         className="text-4xl mb-8"
         style={{ fontFamily: "'Times New Roman', Times, serif" }}
@@ -58,19 +57,19 @@ const About = () => {
         About Me
       </h1>
 
-      {/* Top Row: Photo + Intro Card */}
+      {/* Top Row: Photo + Intro */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
-        {/* Left Card: Square Photo with hover scale */}
-        <div className="bg-white border border-gray-200 rounded-md p-4 flex items-center justify-center transition-transform hover:scale-105 shadow-sm">
+        {/* Left Card: Square Photo */}
+        <div className="border border-gray-200 rounded-md p-4 flex items-center justify-center transition-transform hover:scale-105 shadow-sm bg-opacity-0">
           <img
-            src="about-headshot.png"
+            src="about-headshot.jpeg"
             alt="Profile"
-            className="w-96 h-96 object-cover rounded-md shadow"
+            className="w-72 h-96 object-cover rounded-md shadow"
           />
         </div>
 
         {/* Right Card: Intro */}
-        <div className="bg-white border border-gray-200 rounded-md p-6 flex flex-col justify-between shadow-sm">
+        <div className="border border-gray-200 rounded-md p-6 flex flex-col justify-between shadow-sm">
           <div>
             <h2 className="text-xl mb-4">
               Hi <span className="inline-block">👋</span>, I’m{' '}
@@ -78,16 +77,16 @@ const About = () => {
             </h2>
             <p className="text-sm leading-relaxed">
               I’m a junior at <span className="font-semibold">UT Arlington</span>, 
-              double majoring in <span className="font-semibold">Software Engineering</span> 
+              double majoring in <span className="font-semibold">Software Engineering </span> 
               and <span className="font-semibold">Physics</span> with a minor in 
-              <span className="font-semibold"> Math</span>. 
-              I love exploring React, Tailwind CSS, Python, and dabbling in machine learning. 
+              <span className="font-semibold"> Math</span>.
+              I love exploring React, Tailwind CSS, Python, and machine learning. 
               Whether it's coding or cooking, I believe in constantly challenging myself.
             </p>
             <p className="text-sm mt-4 leading-relaxed">
               When I’m not coding, I’m in the gym practicing calisthenics, 
               tinkering with CAD projects, playing piano, or binging on webtoons. 
-              Always down for new challenges, open-source, and fun tech collaborations!
+              Always open for new challenges, open-source, and fun tech collaborations!
             </p>
           </div>
           <div className="mt-4">
@@ -98,10 +97,10 @@ const About = () => {
         </div>
       </div>
 
-      {/* Middle Row: Hobbies + Education Cards */}
+      {/* Middle Row: Hobbies + Education */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full mt-8">
         {/* Hobbies Card */}
-        <div className="bg-white border border-gray-200 rounded-md p-6 shadow-sm">
+        <div className="border border-gray-200 rounded-md p-6 shadow-sm">
           <h3 className="text-lg font-semibold mb-4">Hobbies</h3>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center space-x-2">
@@ -124,7 +123,7 @@ const About = () => {
         </div>
 
         {/* Education Card */}
-        <div className="bg-white border border-gray-200 rounded-md p-6 shadow-sm">
+        <div className="border border-gray-200 rounded-md p-6 shadow-sm">
           <h3 className="text-lg font-semibold mb-4">Education</h3>
           <ul className="space-y-3 text-sm">
             <li className="flex items-center space-x-2">
@@ -144,15 +143,15 @@ const About = () => {
         </div>
       </div>
 
-      {/* Bottom Card: Skills (white card) */}
-      <div className="bg-white border border-gray-200 rounded-md p-6 max-w-6xl w-full mt-8 shadow-sm">
+      {/* Bottom Card: Skills */}
+      <div className="border border-gray-200 rounded-md p-6 max-w-6xl w-full mt-8 shadow-sm">
         <h3 className="text-lg font-semibold mb-4">Skills</h3>
         <div className="flex flex-wrap justify-center md:justify-start gap-6">
           {skillsData.map((skill, index) => (
             <div
               key={index}
               className="flex flex-col items-center w-16 cursor-pointer
-                         text-black hover:text-orange-500 transition-colors"
+                         hover:text-orange-500 transition-colors"
             >
               <div className="text-3xl mb-2">{skill.icon}</div>
               <p className="text-xs font-medium text-center">{skill.name}</p>
