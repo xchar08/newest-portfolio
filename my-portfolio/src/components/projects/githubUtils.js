@@ -10,10 +10,12 @@ export const fetchProjectDetails = async (repo) => {
     }
     const data = await response.json();
 
-    // Extract description and README content
+    // Extract description
     const description = data.description || 'No description available';
+
+    // Fetch README
     const readmeResponse = await fetch(`${GITHUB_API_URL}${repo}/readme`, {
-      headers: { Accept: 'application/vnd.github.v3.raw' }
+      headers: { Accept: 'application/vnd.github.v3.raw' },
     });
     if (!readmeResponse.ok) {
       throw new Error(`Error fetching README data: ${readmeResponse.statusText}`);
@@ -24,5 +26,20 @@ export const fetchProjectDetails = async (repo) => {
   } catch (error) {
     console.error('Error fetching project details:', error);
     return { description: 'Error fetching description', readmeContent: 'Error fetching README content' };
+  }
+};
+
+export const fetchProjectLanguages = async (repo) => {
+  try {
+    const response = await fetch(`${GITHUB_API_URL}${repo}/languages`);
+    if (!response.ok) {
+      throw new Error(`Error fetching languages: ${response.statusText}`);
+    }
+    const data = await response.json(); // { "Python": 1234, "HTML": 567, ...}
+    const languages = Object.keys(data); // e.g. ["Python", "HTML"]
+    return languages;
+  } catch (err) {
+    console.error('Error fetching project languages:', err);
+    return [];
   }
 };

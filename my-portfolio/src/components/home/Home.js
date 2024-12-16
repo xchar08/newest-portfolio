@@ -32,10 +32,10 @@ const Home = () => {
         </div>
       </div>
       <h1 data-aos="fade-up" className="text-3xl mt-5" style={{ fontFamily: "'Times New Roman', Times, serif", transform: 'translateY(-80px)' }}>
-        Hi, I'm Jeremiah Pitts,
+        Hi, I'm Jeremiah Pitts!
       </h1>
       <h2 data-aos="fade-up" className="text-orange-400 mt-1" style={{ transform: 'translateY(-80px)' }}>
-        a Software Engineering, Physics, & Mathematics Student.
+        I'm a Software Engineering, Physics, & Mathematics Student.
       </h2>
       <div data-aos="fade-up" className="mt-1 text-gray-500" style={{ transform: 'translateY(-80px)' }}>
         I strive to /

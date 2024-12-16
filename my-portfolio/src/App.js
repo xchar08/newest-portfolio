@@ -1,132 +1,93 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { Route, Routes, Link } from 'react-router-dom';
-import { HashLink as ScrollLink } from 'react-router-hash-link';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import { FaSun, FaLinkedinIn } from 'react-icons/fa';
 
+// Import your separate page components
 import Home from './components/home/Home';
 import About from './components/about/About';
 import Experience from './components/experience/Experience';
 import Projects from './components/projects/Projects';
-import Skills from './components/skills/Skills';
 import BlogList from './components/blog/BlogList'; 
 import BlogDetail from './components/blog/BlogDetail'; 
+import Contact from './components/contact/Contact';
 import ProjectDetail from './components/projects/ProjectDetail';
 
-// Custom scroll function
-const scrollWithOffset = (el) => {
-  const yCoordinate = el.getBoundingClientRect().top + window.pageYOffset;
-  const yOffset = -90; // adjust if needed
-  window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' });
-};
-
 function App() {
-  const [isOpen, setIsOpen] = useState(false);
-
   useEffect(() => {
     AOS.init({ duration: 800, easing: 'slide' });
   }, []);
 
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const closeMenu = () => {
-    setIsOpen(false);
-  };
-
   return (
     <>
-      <nav className="fixed w-full z-10 bg-white p-4 shadow">
-        <div className="max-w-7xl mx-auto flex items-center justify-center relative">
-          <div className="md:hidden absolute right-4">
-            <button
-              onClick={toggleMenu}
-              className="text-gray-800 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:ring-opacity-50"
-              aria-label="Toggle Menu"
-            >
-              {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
-            </button>
+      {/* Lily Meng–style header */}
+      <nav className="fixed w-full z-10 bg-white py-2 px-6 border-b border-gray-200 flex items-center justify-between">
+        {/* Left side: Sun icon + Name */}
+        <div className="flex items-center space-x-3">
+          {/* Square with black sun on white */}
+          <div className="bg-white w-10 h-10 flex items-center justify-center rounded-sm">
+            <FaSun className="text-black" />
           </div>
-          <div
-            className={`${
-              isOpen ? 'block' : 'hidden'
-            } w-full md:flex md:items-center md:justify-center md:space-x-6`}
+          {/* Name -> Homepage */}
+          <Link to="/" className="text-lg font-mono text-black hover:underline">
+            Jeremiah Pitts
+          </Link>
+        </div>
+
+        {/* Center Nav */}
+        <div className="flex items-center space-x-6 font-mono text-sm text-black">
+          <Link to="/about" className="hover:underline">
+            about
+          </Link>
+          <Link to="/projects" className="hover:underline">
+            projects
+          </Link>
+          <Link to="/experience" className="hover:underline">
+            experience
+          </Link>
+          <Link to="/blog" className="hover:underline">
+            blog
+          </Link>
+        </div>
+
+        {/* Right side: LinkedIn + Contact */}
+        <div className="flex items-center space-x-4">
+          <a
+            href="https://www.linkedin.com/in/jeremiahpitts/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-10 h-10 border border-black rounded-full flex items-center justify-center hover:bg-black hover:text-white transition"
           >
-            <ScrollLink
-              smooth
-              to="/#home"
-              scroll={scrollWithOffset}
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
-            >
-              Home
-            </ScrollLink>
-            <ScrollLink
-              smooth
-              to="/#about"
-              scroll={scrollWithOffset}
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
-            >
-              About
-            </ScrollLink>
-            <ScrollLink
-              smooth
-              to="/#projects"
-              scroll={scrollWithOffset}
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
-            >
-              Projects
-            </ScrollLink>
-            <ScrollLink
-              smooth
-              to="/#skills"
-              scroll={scrollWithOffset}
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
-            >
-              Skills
-            </ScrollLink>
-            <ScrollLink
-              smooth
-              to="/#experience"
-              scroll={scrollWithOffset}
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
-            >
-              Experience
-            </ScrollLink>
-            <Link
-              to="/blog" 
-              onClick={closeMenu}
-              className="block mt-4 md:mt-0 text-gray-800 hover:text-orange-500 transition-colors duration-300 cursor-pointer"
-            >
-              Blog
-            </Link>
-          </div>
+            <FaLinkedinIn />
+          </a>
+          <Link
+            to="/contact"
+            className="bg-black text-white px-4 py-2 rounded-full hover:bg-gray-900 transition text-sm"
+          >
+            Contact
+          </Link>
         </div>
       </nav>
 
+      {/* Main content with top padding to avoid header overlap */}
       <div className="pt-20">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Home />
-                <About />
-                <Projects />
-                <Skills />
-                <Experience />
-              </>
-            }
-          />
+          {/* Separate pages for each route */}
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/projects" element={<Projects />} />
+          <Route path="/experience" element={<Experience />} />
+          <Route path="/contact" element={<Contact />} />
+
+          {/* Blog */}
           <Route path="/blog" element={<BlogList />} />
           <Route path="/post/:id" element={<BlogDetail />} />
+
+          {/* Project Detail (dynamic route) */}
           <Route path="/projects/:projectName" element={<ProjectDetail />} />
+
+          {/* 404 fallback */}
           <Route path="*" element={<div className="p-8 text-center">Page Not Found</div>} />
         </Routes>
       </div>

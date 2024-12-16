@@ -4,17 +4,14 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import blogPosts from './blogdata';
 import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';       // Enables GitHub Flavored Markdown
-import remarkMath from 'remark-math';     // Enables parsing of math syntax
-import remarkSlug from 'remark-slug';     // Adds slugs to headings for links
-import rehypeKatex from 'rehype-katex';   // Renders LaTeX using KaTeX
-import 'katex/dist/katex.min.css';        // KaTeX CSS for styling mathematical expressions
+import remarkGfm from 'remark-gfm';
+import remarkMath from 'remark-math';
+import remarkSlug from 'remark-slug';
+import rehypeKatex from 'rehype-katex';
+import 'katex/dist/katex.min.css';
 
-// Import the syntax highlighter and desired theme
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism'; 
-
-// Import HashLink for smooth scrolling
+import { okaidia } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import { HashLink } from 'react-router-hash-link';
 
 const BlogDetail = () => {
@@ -48,16 +45,16 @@ const BlogDetail = () => {
       );
     },
     a({ href, children, ...props }) {
-      // If it's an internal hash link, use HashLink with a custom scroll offset
+      // If hash link, use HashLink with smooth scroll
       if (href.startsWith('#')) {
         return (
           <HashLink
             smooth
             to={href}
             scroll={el => {
-              const yOffset = -100; // Adjust this value for desired offset
+              const yOffset = -100;
               const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
-              window.scrollTo({top: y, behavior: 'smooth'});
+              window.scrollTo({ top: y, behavior: 'smooth' });
             }}
             {...props}
           >
@@ -65,7 +62,7 @@ const BlogDetail = () => {
           </HashLink>
         );
       }
-      // Otherwise, just render a normal link
+      // Otherwise external link
       return (
         <a href={href} {...props}>
           {children}
@@ -76,30 +73,47 @@ const BlogDetail = () => {
 
   return (
     <div
-      className="p-8 bg-offwhite min-h-screen"
+      className="pt-20 pb-10 min-h-screen bg-white"
       style={{ fontFamily: "'Fira Mono', monospace" }}
     >
-      <div className="max-w-3xl mx-auto">
-        {/* Blog Post Title */}
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Title */}
         <h1
-          className="text-4xl font-bold mb-4 text-gray-900"
+          className="text-4xl md:text-5xl font-bold text-gray-900 mb-2 leading-tight"
           style={{ fontFamily: "'Times New Roman', Times, serif" }}
         >
           {post.title}
         </h1>
 
-        {/* Blog Post Date */}
-        <p className="text-gray-500 mb-4">{post.date}</p>
+        {/* Excerpt below title */}
+        {post.excerpt && (
+          <p
+            className="text-xl text-gray-700 mb-6 leading-relaxed"
+            style={{ fontFamily: "'Times New Roman', Times, serif" }}
+          >
+            {post.excerpt}
+          </p>
+        )}
 
-        {/* Blog Post Image */}
-        <img
-          src={post.image}
-          alt={post.title}
-          className="w-full h-96 object-cover mb-6 rounded-lg"
-        />
+        {/* Date */}
+        <p className="text-sm text-gray-500 mb-8">{post.date}</p>
 
-        {/* Blog Post Content */}
-        <div className="prose prose-lg max-w-none bg-white p-6 rounded-lg shadow-md">
+        {/* Cropped Feature Image */}
+        <div className="flex justify-center mb-10">
+          <div className="w-full max-w-3xl h-72 overflow-hidden rounded-lg">
+            <img
+              src={post.image}
+              alt={post.title}
+              className="w-full h-full object-cover object-center"
+            />
+          </div>
+        </div>
+
+        {/* Blog Content */}
+        <div
+          className="prose prose-lg max-w-none"
+          style={{ fontFamily: "'Times New Roman', Times, serif" }}
+        >
           <ReactMarkdown
             components={renderers}
             remarkPlugins={[remarkGfm, remarkMath, remarkSlug]}

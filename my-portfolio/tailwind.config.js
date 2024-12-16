@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+      },
+      animation: {
+        // 'marquee' = custom name, '10s' = duration, linear infinite
+        marquee: 'marquee 12s linear infinite',
+      },
       // Extend default theme
       fontFamily: {
         sans: ['Fira Mono', 'monospace'],
@@ -15,6 +25,9 @@ module.exports = {
         'times-new-roman': ['"Times New Roman"', 'Times', 'serif'],
       },
       colors: {
+        fire: {
+          100: '#ce8e9a',
+        },
         orange: {
           500: '#ff7043', // Custom orange for links
         },
