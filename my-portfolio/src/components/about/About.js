@@ -60,11 +60,11 @@ const About = () => {
       {/* Top Row: Photo + Intro */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
         {/* Left Card: Square Photo */}
-        <div className="border border-gray-200 rounded-md p-4 flex items-center justify-center transition-transform hover:scale-105 shadow-sm bg-opacity-0">
+        <div className="border border-gray-200 rounded-md flex items-center justify-center transition-transform hover:scale-105 shadow-sm bg-opacity-0">
           <img
-            src="about-headshot.jpeg"
+            src="line-headshot.png"
             alt="Profile"
-            className="w-72 h-96 object-cover rounded-md shadow"
+            className="w-72 h-96 object-cover rounded-md"
           />
         </div>
 
