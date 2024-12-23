@@ -9,6 +9,7 @@ import battlegrounduta from '../../assets/images/projects/battleground-uta.png';
 import genscript from '../../assets/images/projects/genscript.png';
 import networth from '../../assets/images/projects/networth.png';
 import mavgrades from '../../assets/images/projects/mavgrades.png';
+import momo from '../../assets/images/projects/momo.png';
 
 const languageColorMap = {
   Python: 'bg-blue-500',
@@ -39,6 +40,12 @@ const initialProjects = [
     repo: 'xchar08/genscript',
     category: 'Data Analytics & PreProcessing',
     image: genscript,
+  },
+  {
+    name: 'momo bot',
+    repo: 'xchar08/momo-bot',
+    category: 'Libraries / Packages / Modules / Applications / Frameworks',
+    image: momo,
   },
   {
     name: 'battleground uta',
