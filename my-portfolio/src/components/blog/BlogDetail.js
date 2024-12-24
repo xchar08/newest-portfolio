@@ -26,7 +26,12 @@ const BlogDetail = () => {
     code({ node, inline, className, children, ...props }) {
       const match = /language-(\w+)/.exec(className || '');
       return !inline && match ? (
-        <SyntaxHighlighter style={okaidia} language={match[1]} PreTag="div" {...props}>
+        <SyntaxHighlighter
+          style={okaidia}
+          language={match[1]}
+          PreTag="div"
+          {...props}
+        >
           {String(children).replace(/\n$/, '')}
         </SyntaxHighlighter>
       ) : (
@@ -36,6 +41,7 @@ const BlogDetail = () => {
       );
     },
     a({ href, children, ...props }) {
+      // Smooth scroll for hash links
       if (href.startsWith('#')) {
         return (
           <HashLink
@@ -43,7 +49,8 @@ const BlogDetail = () => {
             to={href}
             scroll={(el) => {
               const yOffset = -100;
-              const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              const y =
+                el.getBoundingClientRect().top + window.pageYOffset + yOffset;
               window.scrollTo({ top: y, behavior: 'smooth' });
             }}
             {...props}
@@ -96,7 +103,23 @@ const BlogDetail = () => {
         </div>
 
         {/* Markdown Content */}
-        <div className="prose prose-lg max-w-none dark:prose-invert transition-colors duration-300">
+        <div
+          className="
+            prose
+            prose-base    /* or use prose-lg if you like it bigger */
+            leading-relaxed
+            max-w-none
+            dark:prose-invert
+            transition-colors
+            duration-300
+
+            /* Optionally fine-tune spacing for headings, paragraphs, etc. */
+            prose-h1:mb-4
+            prose-h2:mb-3
+            prose-h3:mb-2
+            prose-p:my-4
+          "
+        >
           <ReactMarkdown
             components={renderers}
             remarkPlugins={[remarkGfm, remarkMath, remarkSlug]}
