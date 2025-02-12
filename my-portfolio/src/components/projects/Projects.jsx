@@ -9,8 +9,89 @@ import battlegrounduta from '../../assets/images/projects/battleground-uta.png';
 import genscript from '../../assets/images/projects/genscript.png';
 import networth from '../../assets/images/projects/networth.png';
 import mavgrades from '../../assets/images/projects/mavgrades.png';
+import mavgrades2 from '../../assets/images/projects/mavgrades2.png';
 import momo from '../../assets/images/projects/momo.png';
+import kiba from '../../assets/images/projects/kiba.png';
+import kiba2 from '../../assets/images/projects/kiba2.png';
+import kiba3 from '../../assets/images/projects/kiba3.png';
+import tailed from '../../assets/images/projects/tailed.png';
+import quench from '../../assets/images/projects/quench.png';
+import lugnuts from '../../assets/images/projects/lugnuts.png';
+import devtect from '../../assets/images/projects/devtect.png';
+import nusfintech2025 from '../../assets/images/projects/nusfintech2025.png';
+import neuro from '../../assets/images/projects/neuro.png';
+import redshift from '../../assets/images/projects/redshift.png';
+import secretagent from '../../assets/images/projects/secretagent.png';
 
+// Import icons from react-icons
+import { 
+  FaExternalLinkAlt, 
+  FaVideo, 
+  FaGithub, 
+  FaFileWord, 
+  FaFilePowerpoint 
+} from 'react-icons/fa';
+
+// ------------------------------
+// ImageCarousel Component
+// ------------------------------
+// ImageCarousel Component (updated)
+
+const ImageCarousel = ({ images, altText, autoScrollInterval = 50000 }) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Always call useEffect; inside it, check if images exist.
+  useEffect(() => {
+    if (!images || images.length === 0) return; // Do nothing if there are no images.
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, autoScrollInterval);
+    return () => clearInterval(interval);
+  }, [images, autoScrollInterval]);
+
+  // Now conditionally render null if there are no images.
+  if (!images || images.length === 0) return null;
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+  };
+
+  return (
+    <div className="relative w-full h-full">
+      <img
+        src={images[currentIndex]}
+        alt={altText}
+        className="w-full h-full object-cover"
+      />
+      {images.length > 1 && (
+        <>
+          <button
+            onClick={handlePrev}
+            className="absolute left-2 top-1/2 transform -translate-y-1/2 text-white opacity-20 hover:opacity-40 focus:outline-none text-sm"
+            title="Previous Image"
+          >
+            &#9664;
+          </button>
+          <button
+            onClick={handleNext}
+            className="absolute right-2 top-1/2 transform -translate-y-1/2 text-white opacity-20 hover:opacity-40 focus:outline-none text-sm"
+            title="Next Image"
+          >
+            &#9654;
+          </button>
+        </>
+      )}
+    </div>
+  );
+};
+
+// ------------------------------
+// Other Data & Components
+// ------------------------------
 const languageColorMap = {
   Python: 'bg-blue-500',
   'Jupyter Notebook': 'bg-orange-500',
@@ -34,42 +115,115 @@ const categories = [
   'Libraries / Packages / Modules / Applications / Frameworks',
 ];
 
+// Updated project objects use an array "images" instead of a single "image".
+// (For projects with one image, just pass an array with one element.)
 const initialProjects = [
   {
-    name: 'genscript',
-    repo: 'xchar08/genscript',
-    category: 'Data Analytics & PreProcessing',
-    image: genscript,
-  },
-  {
-    name: 'momo bot',
-    repo: 'xchar08/momo-bot',
-    category: 'Libraries / Packages / Modules / Applications / Frameworks',
-    image: momo,
-  },
-  {
-    name: 'battleground uta',
-    repo: 'xchar08/battleground-uta',
-    category: 'Frontend & UI Development',
-    image: battlegrounduta,
+    name: 'Blockchain + ML API',
+    repo: 'xchar08/NUSFintech2025',
+    category: 'Machine Learning / Artificial Intelligence',
+    images: [nusfintech2025],
+    videoLink: 'https://youtu.be/ivoEqLG3aAY',
+    presentationDocLink: 'https://docs.google.com/document/d/1d7TW9QtAEoIa-LvwZhsuVr4nXZgXLBIbUgKqjQNGu9c/',
+    presentationSlideLink: 'https://docs.google.com/presentation/d/1foQ3qKivbaIqeH7YIuIMt9eJcLNMDiy3TK2WV43GFvA/',
   },
   {
     name: 'NetWorth',
     repo: 'xchar08/networth',
     category: 'Full Stack Development',
-    image: networth,
+    images: [networth],
+    deployLink: 'https://your-networth.vercel.app/',
   },
   {
-    name: 'Greenfoot Galaga',
-    repo: 'xchar08/java-oop-greenfoot',
-    category: 'Algorithms / Dynamical Programming',
-    image: galaga,
+    name: 'Devtect',
+    repo: 'xchar08/devtect',
+    category: 'Machine Learning / Artificial Intelligence',
+    images: [devtect],
+    deployLink: 'https://devtect.vercel.app/',
+    videoLink: 'https://youtu.be/rug4z8Iivd8',
+    presentationSlideLink: 'https://docs.google.com/presentation/d/1YHtwJFDciRyziOMboqSvcUEgwqi-JIw4vdz_FJTnvWg/',
+  },
+  {
+    name: 'Kiba Studies',
+    repo: 'xchar08/kiba-studies',
+    category: 'Frontend & UI Development',
+    images: [kiba, kiba2, kiba3],
+    deployLink: 'https://kiba-studies.vercel.app/',
+  },
+  {
+    name: 'Lug Nuts Website',
+    repo: 'uta-lug-nuts/lug-nuts',
+    category: 'Frontend & UI Development',
+    images: [lugnuts],
+    deployLink: 'https://lugtnuts.org',
+  },
+  {
+    name: 'genscript',
+    repo: 'xchar08/genscript',
+    category: 'Data Analytics & PreProcessing',
+    images: [genscript],
+  },
+  {
+    name: 'momo bot',
+    repo: 'xchar08/momo-bot',
+    category: 'Libraries / Packages / Modules / Applications / Frameworks',
+    images: [momo],
+  },
+  {
+    name: 'battleground uta',
+    repo: 'xchar08/battleground-uta',
+    category: 'Frontend & UI Development',
+    images: [battlegrounduta],
+    deployLink: 'https://battleground-uta.vercel.app/',
+  },
+  {
+    name: 'Quench',
+    repo: 'xchar08/quench',
+    category: 'Machine Learning / Artificial Intelligence',
+    images: [quench],
+    deployLink: 'https://quench-fires.vercel.app/',
+    videoLink: 'https://youtu.be/_MlsHqO0AZc',
+    presentationSlideLink: 'https://docs.google.com/presentation/d/1QzZRt1Y6cO4Wwg7yOgKRLkmpxdmrjdM5j7IDhAymRwU/',
+  },
+  {
+    name: 'BEST Robotics Code 2021',
+    repo: 'xchar08/robotc-redshift-robotics-2021',
+    category: 'Hardware Engineering Integrations',
+    images: [redshift],
   },
   {
     name: 'Mavgrades',
     repo: 'acmuta/mavgrades',
     category: 'Frontend & UI Development',
-    image: mavgrades,
+    images: [mavgrades, mavgrades2],
+    deployLink: 'https://www.mavgrades.com/',
+  },
+  {
+    name: 'Neuro Reader',
+    repo: 'xchar08/neuro-reader',
+    category: 'Libraries / Packages / Modules / Applications / Frameworks',
+    images: [neuro],
+  },
+  {
+    name: 'Secret Agent',
+    repo: 'xchar08/Secret-Agent',
+    category: 'Full Stack Development',
+    images: [secretagent],
+    presentationDocLink: 'https://docs.google.com/document/d/1-L23gqJfYoFLtRlU15294s8Nui7a9YLkNjEmYkRxlLI/',
+    presentationSlideLink: 'https://docs.google.com/presentation/d/1Irn0Q3gEuMONn3lDr2BsC-VGVB-dVGkY6twwNuBvIVU/',
+  },
+  {
+    name: 'Greenfoot Galaga',
+    repo: 'xchar08/java-oop-greenfoot',
+    category: 'Algorithms / Dynamical Programming',
+    images: [galaga],
+    deployLink: 'https://www.greenfoot.org/scenarios/26902',
+  },
+  {
+    name: 'Tailed',
+    repo: 'xchar08/tailed',
+    category: 'Algorithms / Dynamical Programming',
+    images: [tailed],
   },
 ];
 
@@ -83,6 +237,9 @@ const LanguageDot = ({ lang }) => {
   );
 };
 
+// ------------------------------
+// Projects Component
+// ------------------------------
 const Projects = () => {
   const [projects, setProjects] = useState(initialProjects);
   const [filteredProjects, setFilteredProjects] = useState(initialProjects);
@@ -157,15 +314,11 @@ const Projects = () => {
         {filteredProjects.map((project, index) => (
           <div key={project.name} className="flex flex-col space-y-4">
             <div className="flex flex-col md:flex-row gap-4 items-start">
-              {/* Cropped rectangle image on the left */}
-              {project.image && (
+              {/* Image Carousel on the left */}
+              {project.images && project.images.length > 0 && (
                 <div className="w-full md:w-1/3">
                   <div className="w-full h-40 md:h-48 rounded-md shadow-md overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={`${project.name} project`}
-                      className="w-full h-full object-cover"
-                    />
+                    <ImageCarousel images={project.images} altText={`${project.name} cover`} />
                   </div>
                 </div>
               )}
@@ -190,14 +343,69 @@ const Projects = () => {
                     ))}
                   </div>
                 )}
-                {/* “Read Me” link */}
-                <div className="mt-3">
+                {/* “Read Me” and optional icon links */}
+                <div className="mt-3 flex flex-wrap items-center gap-2">
                   <Link
                     to={`/projects/${project.name}`}
                     className="inline-block bg-orange-100 text-orange-800 px-3 py-1 rounded-full hover:bg-orange-200 transition text-sm"
                   >
                     Read Me
                   </Link>
+                  {project.deployLink && (
+                    <a
+                      href={project.deployLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="View Deployment"
+                      className="inline-block bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition"
+                    >
+                      <FaExternalLinkAlt />
+                    </a>
+                  )}
+                  {project.videoLink && (
+                    <a
+                      href={project.videoLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Watch Video"
+                      className="inline-block bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition"
+                    >
+                      <FaVideo />
+                    </a>
+                  )}
+                  {(project.githubLink || project.repo) && (
+                    <a
+                      href={project.githubLink ? project.githubLink : `https://github.com/${project.repo}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="View on GitHub"
+                      className="inline-block bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition"
+                    >
+                      <FaGithub />
+                    </a>
+                  )}
+                  {project.presentationDocLink && (
+                    <a
+                      href={project.presentationDocLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="View Presentation Document"
+                      className="inline-block bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition"
+                    >
+                      <FaFileWord />
+                    </a>
+                  )}
+                  {project.presentationSlideLink && (
+                    <a
+                      href={project.presentationSlideLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="View Presentation Slideshow"
+                      className="inline-block bg-gray-100 text-gray-800 p-2 rounded-full hover:bg-gray-200 transition"
+                    >
+                      <FaFilePowerpoint />
+                    </a>
+                  )}
                 </div>
               </div>
             </div>

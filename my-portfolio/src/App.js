@@ -65,16 +65,16 @@ function App() {
           {/* Center Nav */}
           <div className="flex items-center space-x-6 font-mono text-sm">
             <Link to="/about" className="hover:underline">
-              about
+              About
             </Link>
             <Link to="/projects" className="hover:underline">
-              projects
+              Projects
             </Link>
             <Link to="/experience" className="hover:underline">
-              experience
+              Experience
             </Link>
             <Link to="/blog" className="hover:underline">
-              blog
+              Blog
             </Link>
           </div>
 

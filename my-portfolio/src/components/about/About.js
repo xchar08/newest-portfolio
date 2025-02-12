@@ -16,8 +16,11 @@ import {
   FaChessKnight,
   FaGraduationCap,
   FaUniversity,
+  FaLinkedin,
+  FaGithub,
 } from 'react-icons/fa';
 import {
+  SiDevpost,
   SiCplusplus,
   SiOpencv,
   SiTensorflow,
@@ -49,127 +52,181 @@ const skillsData = [
 
 const About = () => {
   return (
-    <section className="min-h-screen py-12 px-6 flex flex-col items-center transition-colors duration-300">
-      <h1
-        className="text-4xl mb-8"
-        style={{ fontFamily: "'Times New Roman', Times, serif" }}
-      >
-        About Me
-      </h1>
+    <div className="min-h-screen px-4 py-6 md:px-8 md:py-8">
+      <div className="flex flex-col md:flex-row max-w-7xl mx-auto bg-white shadow-md rounded-lg overflow-hidden">
+        {/* Sidebar */}
+        <aside className="md:w-1/3 p-6 border-r border-gray-200">
+          <div className="flex flex-col items-center">
+            <img
+              src="line-headshot.png"
+              alt="Profile"
+              className="w-32 h-32 object-cover rounded-full border border-gray-300"
+            />
+            <h1 className="text-4xl mt-4" style={{ fontFamily: "'Times New Roman', Times, serif" }}>
+              Jeremiah Pitts
+            </h1> 
+            <p className="text-sm text-gray-600">Software Engineer</p>
+          </div>
+          <nav className="mt-8">
+            <ul className="space-y-4 ml-36">
+              <li>
+                <a
+                  href="#about"
+                  className="text-sm text-gray-700 hover:text-orange-500 transition-colors"
+                >
+                  About Me
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#hobbies"
+                  className="text-sm text-gray-700 hover:text-orange-500 transition-colors"
+                >
+                  Hobbies
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#education"
+                  className="text-sm text-gray-700 hover:text-orange-500 transition-colors"
+                >
+                  Education
+                </a>
+              </li>
+              <li>
+                <a
+                  href="#skills"
+                  className="text-sm text-gray-700 hover:text-orange-500 transition-colors"
+                >
+                  Skills
+                </a>
+              </li>
+            </ul>
+          </nav>
+          <div className="-ml-10 flex justify-center mt-10 space-x-4">
+            <a
+              href="https://www.linkedin.com/in/jeremiahpitts/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 text-xl hover:text-orange-400 transition-colors"
+            >
+              <FaLinkedin />
+            </a>
+            <a
+              href="https://github.com/xchar08"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 text-xl hover:text-orange-400 transition-colors"
+            >
+              <FaGithub />
+            </a>
+            <a
+              href="https://devpost.com/xchar08"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 text-xl hover:text-orange-400 transition-colors"
+            > 
+            <SiDevpost />
+          </a>
+          </div>
+        </aside>
 
-      {/* Top Row: Photo + Intro */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full">
-        {/* Left Card: Square Photo */}
-        <div className="border border-gray-200 rounded-md flex items-center justify-center transition-transform hover:scale-105 shadow-sm bg-opacity-0">
-          <img
-            src="line-headshot.png"
-            alt="Profile"
-            className="w-72 h-96 object-cover rounded-md"
-          />
-        </div>
-
-        {/* Right Card: Intro */}
-        <div className="border border-gray-200 rounded-md p-6 flex flex-col justify-between shadow-sm">
-          <div>
-            <h2 className="text-xl mb-4">
-              Hi <span className="inline-block">👋</span>, I’m{' '}
-              <span className="font-semibold">Jeremiah Pitts</span>
-            </h2>
+        {/* Main Content */}
+        <main className="md:w-2/3 p-6">
+          {/* About Section */}
+          <section id="about" className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">About Me</h2>
             <p className="text-sm leading-relaxed">
-              I’m a junior at <span className="font-semibold">UT Arlington</span>, 
-              double majoring in <span className="font-semibold">Software Engineering </span> 
-              and <span className="font-semibold">Physics</span> with a minor in 
-              <span className="font-semibold"> Math</span>.
-              I love exploring React, Tailwind CSS, Python, and machine learning. 
-              Whether it's coding or cooking, I believe in constantly challenging myself.
+              Hi <span>👋</span>, I’m <span className="font-semibold">Jeremiah Pitts</span>. I’m a junior at{' '}
+              <span className="font-semibold">UT Arlington</span>, double majoring in{' '}
+              <span className="font-semibold">Software Engineering</span> and{' '}
+              <span className="font-semibold">Physics</span> with a minor in{' '}
+              <span className="font-semibold">Math</span>. I enjoy coding, exploring new technologies,
+              and constantly challenging myself both in and out of the tech realm.
             </p>
             <p className="text-sm mt-4 leading-relaxed">
-              When I’m not coding, I’m in the gym practicing calisthenics, 
-              tinkering with CAD projects, playing piano, or binging on webtoons. 
-              Always open for new challenges, open-source, and fun tech collaborations!
+              Outside of coding, you'll find me at the gym, working on CAD projects, playing the piano,
+              or enjoying a good webtoon.
             </p>
-          </div>
-          <div className="mt-4">
-            <button className="bg-orange-500 text-white font-medium px-5 py-2 rounded-full shadow hover:bg-orange-400 transition-colors">
-              Research &rarr;
-            </button>
-          </div>
-        </div>
-      </div>
+          </section>
 
-      {/* Middle Row: Hobbies + Education */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl w-full mt-8">
-        {/* Hobbies Card */}
-        <div className="border border-gray-200 rounded-md p-6 shadow-sm">
-          <h3 className="text-lg font-semibold mb-4">Hobbies</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center space-x-2">
-              <FaBook className="text-orange-500" />
-              <span>Reading Webtoons</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <FaPaintBrush className="text-orange-500" />
-              <span>Calisthenics</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <FaPalette className="text-orange-500" />
-              <span>Piano</span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <FaChessKnight className="text-orange-500" />
-              <span>CAD Projects</span>
-            </li>
-          </ul>
-        </div>
+          {/* Hobbies Section */}
+          <section id="hobbies" className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">Hobbies</h2>
+            <ul className="space-y-3">
+              <li className="flex items-center space-x-2">
+                <FaBook className="text-orange-500" />
+                <span className="text-sm">Reading Webtoons</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <FaPaintBrush className="text-orange-500" />
+                <span className="text-sm">Calisthenics</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <FaPalette className="text-orange-500" />
+                <span className="text-sm">Piano</span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <FaChessKnight className="text-orange-500" />
+                <span className="text-sm">CAD Projects</span>
+              </li>
+            </ul>
+          </section>
 
-        {/* Education Card */}
-        <div className="border border-gray-200 rounded-md p-6 shadow-sm">
-          <h3 className="text-lg font-semibold mb-4">Education</h3>
-          <ul className="space-y-3 text-sm">
-            <li className="flex items-center space-x-2">
-              <FaGraduationCap className="text-orange-500" />
-              <span>
-                Software Engineering &amp; Physics (Double Major),<br />
-                <span className="font-semibold">UT Arlington</span>
-              </span>
-            </li>
-            <li className="flex items-center space-x-2">
-              <FaUniversity className="text-orange-500" />
-              <span>
-                Minor in <span className="font-semibold">Math</span>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
+          {/* Education Section */}
+          <section id="education" className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">Education</h2>
+            <ul className="space-y-3">
+              <li className="flex items-center space-x-2">
+                <FaGraduationCap className="text-orange-500" />
+                <span className="text-sm">
+                  Software Engineering &amp; Physics (Double Major),<br />
+                  <span className="font-semibold"> UT Arlington</span>
+                </span>
+              </li>
+              <li className="flex items-center space-x-2">
+                <FaUniversity className="text-orange-500" />
+                <span className="text-sm">
+                  Minor in <span className="font-semibold">Math</span>
+                </span>
+              </li>
+            </ul>
+          </section>
 
-      {/* Bottom Card: Skills */}
-      <div className="border border-gray-200 rounded-md p-6 max-w-6xl w-full mt-8 shadow-sm">
-        <h3 className="text-lg font-semibold mb-4">Skills</h3>
-        <div className="flex flex-wrap justify-center md:justify-start gap-6">
-          {skillsData.map((skill, index) => (
-            <div
-              key={index}
-              className="flex flex-col items-center w-16 cursor-pointer
-                         hover:text-orange-500 transition-colors"
-            >
-              <div className="text-3xl mb-2">{skill.icon}</div>
-              <p className="text-xs font-medium text-center">{skill.name}</p>
+          {/* Skills Section */}
+          <section id="skills" className="mb-8">
+            <h2 className="text-xl font-semibold mb-4">Skills</h2>
+            <div className="flex flex-wrap gap-4">
+              {skillsData.map((skill, index) => (
+                <div
+                  key={index}
+                  className="flex flex-col items-center w-16 cursor-pointer hover:text-orange-500 transition-colors"
+                >
+                  <div className="text-3xl mb-1">{skill.icon}</div>
+                  <span className="text-xs text-center">{skill.name}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
-      </div>
+          </section>
 
-      {/* CTA Buttons */}
-      <div className="flex space-x-4 mt-8">
-        <button className="bg-orange-500 text-white px-6 py-2 rounded-full shadow hover:bg-orange-400 transition">
-          View Resume
-        </button>
-        <button className="bg-orange-500 text-white px-6 py-2 rounded-full shadow hover:bg-orange-400 transition">
-          Get in Touch
-        </button>
+          {/* Call-to-Action Section */}
+          <section className="flex justify-center space-x-4 mt-8">
+            <button
+              className="bg-orange-500 text-white text-sm px-5 py-2 rounded-full shadow hover:bg-orange-400 transition-colors"
+              onClick={() => window.open('resume.pdf', '_blank')}
+            >
+              View Resume
+            </button>
+            <button
+              className="bg-orange-500 text-white text-sm px-5 py-2 rounded-full shadow hover:bg-orange-400 transition-colors"
+              onClick={() => (window.location.href = '/contact')}
+            >
+              Get in Touch
+            </button>
+          </section>
+        </main>
       </div>
-    </section>
+    </div>
   );
 };
 
