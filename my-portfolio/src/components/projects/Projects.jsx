@@ -6,6 +6,7 @@ import { fetchProjectDetails, fetchProjectLanguages } from './githubUtils';
 // Import images
 import galaga from '../../assets/images/projects/galaga.png';
 import battlegrounduta from '../../assets/images/projects/battleground-uta.png';
+import battlegrounduta2 from '../../assets/images/projects/battleground-uta2.png';
 import genscript from '../../assets/images/projects/genscript.png';
 import networth from '../../assets/images/projects/networth.png';
 import mavgrades from '../../assets/images/projects/mavgrades.png';
@@ -16,9 +17,13 @@ import kiba2 from '../../assets/images/projects/kiba2.png';
 import kiba3 from '../../assets/images/projects/kiba3.png';
 import tailed from '../../assets/images/projects/tailed.png';
 import quench from '../../assets/images/projects/quench.png';
+import quench2 from '../../assets/images/projects/quench2.png';
 import lugnuts from '../../assets/images/projects/lugnuts.png';
 import devtect from '../../assets/images/projects/devtect.png';
+import devtect2 from '../../assets/images/projects/devtect2.png';
+import devtect3 from '../../assets/images/projects/devtect3.png';
 import nusfintech2025 from '../../assets/images/projects/nusfintech2025.png';
+import nusfintech20252 from '../../assets/images/projects/nusfintech20252.png';
 import neuro from '../../assets/images/projects/neuro.png';
 import redshift from '../../assets/images/projects/redshift.png';
 import secretagent from '../../assets/images/projects/secretagent.png';
@@ -119,26 +124,10 @@ const categories = [
 // (For projects with one image, just pass an array with one element.)
 const initialProjects = [
   {
-    name: 'Blockchain + ML API',
-    repo: 'xchar08/NUSFintech2025',
-    category: 'Machine Learning / Artificial Intelligence',
-    images: [nusfintech2025],
-    videoLink: 'https://youtu.be/ivoEqLG3aAY',
-    presentationDocLink: 'https://docs.google.com/document/d/1d7TW9QtAEoIa-LvwZhsuVr4nXZgXLBIbUgKqjQNGu9c/',
-    presentationSlideLink: 'https://docs.google.com/presentation/d/1foQ3qKivbaIqeH7YIuIMt9eJcLNMDiy3TK2WV43GFvA/',
-  },
-  {
-    name: 'NetWorth',
-    repo: 'xchar08/networth',
-    category: 'Full Stack Development',
-    images: [networth],
-    deployLink: 'https://your-networth.vercel.app/',
-  },
-  {
     name: 'Devtect',
     repo: 'xchar08/devtect',
     category: 'Machine Learning / Artificial Intelligence',
-    images: [devtect],
+    images: [devtect, devtect2, devtect3],
     deployLink: 'https://devtect.vercel.app/',
     videoLink: 'https://youtu.be/rug4z8Iivd8',
     presentationSlideLink: 'https://docs.google.com/presentation/d/1YHtwJFDciRyziOMboqSvcUEgwqi-JIw4vdz_FJTnvWg/',
@@ -149,6 +138,22 @@ const initialProjects = [
     category: 'Frontend & UI Development',
     images: [kiba, kiba2, kiba3],
     deployLink: 'https://kiba-studies.vercel.app/',
+  },
+  {
+    name: 'Blockchain + ML API',
+    repo: 'xchar08/NUSFintech2025',
+    category: 'Machine Learning / Artificial Intelligence',
+    images: [nusfintech2025, nusfintech20252],
+    videoLink: 'https://youtu.be/ivoEqLG3aAY',
+    presentationDocLink: 'https://docs.google.com/document/d/1d7TW9QtAEoIa-LvwZhsuVr4nXZgXLBIbUgKqjQNGu9c/',
+    presentationSlideLink: 'https://docs.google.com/presentation/d/1foQ3qKivbaIqeH7YIuIMt9eJcLNMDiy3TK2WV43GFvA/',
+  },
+  {
+    name: 'NetWorth',
+    repo: 'xchar08/networth',
+    category: 'Full Stack Development',
+    images: [networth],
+    deployLink: 'https://your-networth.vercel.app/',
   },
   {
     name: 'Lug Nuts Website',
@@ -173,14 +178,14 @@ const initialProjects = [
     name: 'battleground uta',
     repo: 'xchar08/battleground-uta',
     category: 'Frontend & UI Development',
-    images: [battlegrounduta],
+    images: [battlegrounduta, battlegrounduta2],
     deployLink: 'https://battleground-uta.vercel.app/',
   },
   {
     name: 'Quench',
     repo: 'xchar08/quench',
     category: 'Machine Learning / Artificial Intelligence',
-    images: [quench],
+    images: [quench, quench2],
     deployLink: 'https://quench-fires.vercel.app/',
     videoLink: 'https://youtu.be/_MlsHqO0AZc',
     presentationSlideLink: 'https://docs.google.com/presentation/d/1QzZRt1Y6cO4Wwg7yOgKRLkmpxdmrjdM5j7IDhAymRwU/',
